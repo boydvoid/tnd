@@ -24,7 +24,9 @@
   "homepage": "https://github.com/robaboyd/tnd#readme",
   "dependencies": {
     "concurrently": "^4.1.0",
+    "draft-js": "^0.10.5",
     "express": "^4.16.4",
-    "nodemon": "^1.19.0"
+    "nodemon": "^1.19.0",
+    "pure-react-carousel": "^1.19.4"
   }
 }

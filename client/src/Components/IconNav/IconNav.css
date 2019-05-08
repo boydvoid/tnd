@@ -1,8 +1,39 @@
 .icon-nav {
 	display: flex;
+	max-height: 200px;
+	height: 100%;
+	padding: 50px;
 }
 
-.icon-nav img {
-	width: 322px;
-	height: auto;
+.icon-nav .logo {
+	transform: scale(1.5);
+	margin-left: 50px;
+}
+
+.icon-nav ul {
+	list-style-type: none;
+	width: 100%;
+	display: flex;
+	justify-content: space-evenly;
+	;
+}
+
+.icon-nav ul li {
+	float: left;
+}
+
+.icon-nav .icons {
+	width: 94px;
+}
+
+.icon-nav-right {
+	width: 50%;
+	display: flex;
+	justify-content: center;
+}
+
+.icon-link-tags {
+	display: flex;
+	flex-direction: column;
+	align-items: center;
 }

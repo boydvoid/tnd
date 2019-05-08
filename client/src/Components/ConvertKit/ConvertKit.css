@@ -1,0 +1,16 @@
+.convert-kit-div {
+	background-color: #00CAFA;
+	padding: 60px;
+}
+
+.convert-kit-div input {
+	margin: 20px;
+	padding: 10px;
+}
+
+.convert-kit-div select {
+	width: 200px;
+	padding: 10px;
+	border: none;
+	margin: 20px;
+}

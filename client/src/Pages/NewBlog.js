@@ -1,12 +1,8 @@
 import React, { Component } from 'react';
+import BlogEditor from '../Components/BlogEditor/BlogEditor';
 import AdminNav from '../Components/AdminNav/AdminNav';
-import PBtn from '../Components/PBtn/PBtn';
-import {Link} from 'react-router-dom'
-class Admin extends Component {
 
-	newBlog = () => {
-		window.location.href('/admin/newBlog')
-	}
+class NewBlog extends Component {
 	render () {
 		return(
 			<div className="container-fluid">
@@ -14,8 +10,7 @@ class Admin extends Component {
 				<div className="container">
 					<div className="row">
 						<div className="col-xl-12">
-							Admin Home
-							<Link to="/admin/newblog">New Blog</Link>
+							<BlogEditor/>
 						</div>
 					</div>
 				</div>
@@ -24,4 +19,4 @@ class Admin extends Component {
 	}
 }
 
-export default Admin;
+export default NewBlog;

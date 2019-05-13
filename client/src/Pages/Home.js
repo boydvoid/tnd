@@ -8,7 +8,7 @@ import CollectionSlider from '../Components/CollectionSlider/CollectionSlider';
 class Home extends Component {
 	render () {
 		return (
-			<div className="wrapper">
+			<div className="wrapper-home">
 				<MainNav/>	
 				<div className="container-fluid">
 					<IconNav />

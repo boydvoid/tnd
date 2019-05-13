@@ -1,71 +1,42 @@
 import React, { Component } from 'react';
-import {Editor, EditorState, RichUtils} from 'draft-js';
+import { EditorState, convertToRaw } from 'draft-js';
+import { Editor } from 'react-draft-wysiwyg';
+import draftToHtml from 'draftjs-to-html';
+import htmlToDraft from 'html-to-draftjs';
+import '../../../node_modules/react-draft-wysiwyg/dist/react-draft-wysiwyg.css'
 import './BlogEditor.css'
+import Input from '../Input/Input.js'
 class BlogEditor extends Component {
-	state = {
-		editorState: EditorState.createEmpty()
-	}
-
- onChange = (editorState) => {
-		this.setState({editorState})
-	}
-//editing funcitons
-  
-  handleKeyCommand = (command) => {
-    const newState = RichUtils.handleKeyCommand(this.state.editorState, command)
-    if (newState) {
-        this.onChange(newState);
-        return 'handled';
-    }
-    return 'not-handled';
+  state = {
+    editorState: EditorState.createEmpty(),
+    editorHTML: {__html: '<div></div>'}
   }
 
-	_onBoldClick() {
-		this.onChange(RichUtils.toggleInlineStyle(this.state.editorState, 'BOLD'));
-	}
+  onEditorStateChange = (editorState) => {
+    this.setState({
+      editorState,
+      editorHTML: {__html: draftToHtml(convertToRaw(editorState.getCurrentContent()))}
+    })
+  };
 
-	_onItalicClick() {
-		this.onChange(RichUtils.toggleInlineStyle(this.state.editorState, 'ITALIC'));
-	}
-
-	_onUnderlineClick() {
-		this.onChange(RichUtils.toggleInlineStyle(this.state.editorState, 'UNDERLINE'));
-	}
-
-	_onStrikeThroughClick() {
-		this.onChange(RichUtils.toggleInlineStyle(this.state.editorState, 'STRIKETHROUGH'));
-	}
-
-	_onAddLink = () => {
-    const editorState = this.state.editorState;
-    const selection = editorState.getSelection();
-    const link = window.prompt('Paste the link -')
-    if (!link) {
-      this.onChange(RichUtils.toggleLink(editorState, selection, null));
-      return 'handled';
-    }
-    const content = editorState.getCurrentContent();
-    const contentWithEntity = content.createEntity('LINK', 'MUTABLE', { url: link });
-    const newEditorState = EditorState.push(editorState, contentWithEntity, 'create-entity');
-    const entityKey = contentWithEntity.getLastCreatedEntityKey();
-    this.onChange(RichUtils.toggleLink(newEditorState, selection, entityKey))
-	}
-
-  //end of function
-	render() {
-		return (
-			<div>
-				<button onClick={this._onBoldClick.bind(this)}><b>B</b></button>
-				<button onClick={this._onItalicClick.bind(this)}><i>Italic</i></button>
-				<button onClick={this._onUnderlineClick.bind(this)}><u>U</u></button>
-				<button onClick={this._onStrikeThroughClick.bind(this)}><s>abc</s></button>
-				<button onClick={this._onAddLink.bind(this)}>Link</button>
-				<div className="editor">
-					<Editor editorState={this.state.editorState} onChange={this.onChange} handleKeyCommand={this.handleKeyCommand} />
-				</div>
-			</div>
-		)
-	}
+  render() {
+    const { editorState } = this.state;
+    return (
+      <div>
+      <div class="title">
+        <Input/> 
+      </div>
+      <div className="editorWrapper">
+        <Editor
+          editorState={editorState}
+          onEditorStateChange={this.onEditorStateChange}
+        />
+      </div>
+      <div>
+        <span dangerouslySetInnerHTML={this.state.editorHTML} />
+      </div>
+      </div>
+    );
+  }
 }
-
 export default BlogEditor;

@@ -2,14 +2,13 @@ import React, { Component } from 'react';
 import AdminNav from '../Components/AdminNav/AdminNav';
 import PBtn from '../Components/PBtn/PBtn';
 import {Link} from 'react-router-dom'
+import './Admin.css'
 class Admin extends Component {
 
-	newBlog = () => {
-		window.location.href('/admin/newBlog')
-	}
+
 	render () {
 		return(
-			<div className="container-fluid">
+			<div className="container-fluid admin">
 				<AdminNav />
 				<div className="container">
 					<div className="row">

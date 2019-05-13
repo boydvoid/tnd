@@ -1,3 +1,16 @@
 .editor {
 	border: 1px solid black;
+	text-align: start;
+	min-height: 10em;
+	padding: 10px;
+}
+
+.public-DraftEditor-content {
+	min-height: 10em;
+}
+
+.editorWrapper{
+  border: 1px solid black;
+  max-height: 300px;
+  overflow:scroll;
 }

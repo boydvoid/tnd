@@ -7,7 +7,6 @@ import Login from './Pages/Login'
 import NewBlog from './Pages/NewBlog';
 import api from "./utils/api";
 
-
 class App extends Component {
   state= {
     loggedIn: false,
@@ -58,7 +57,7 @@ class App extends Component {
                   loggedIn === true ? <Admin logout={this.logout} username={this.state.username}/> : <Login />
                 }
               />
-            <Route exact path="/admin/newblog" render={() =>
+            <Route exact path="/admin/blog/:id" render={() =>
                   loggedIn === true ? <NewBlog logout={this.logout} username={this.state.username}/> : <Login /> 
                 }
               />

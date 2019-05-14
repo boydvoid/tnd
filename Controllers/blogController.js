@@ -11,12 +11,40 @@ module.exports = {
   },
  save: (req, res) => {
    console.log(req.body)
-  db.blogs.create({
-    username: req.body.username,
-    blog: req.body.blog, 
-    title: req.body.title
+   db.blogs.findOne({
+     _id: req.body.id
+   }).then(found => {
+     
+     db.blogs.update({
+       username: req.body.username,
+       blog: req.body.blog, 
+       title: req.body.title
+     }).then(done => {
+       res.send(done)
+     })
+   })
+ },
+ new: (req, res) => {
+  console.log(req.body)
+ db.blogs.create({
+   username: req.body.username,
+   blog: "<p>New Blog</p>", 
+   title: req.body.title
+ }).then(done => {
+   res.send(done)
+ })
+},
+ loadall: (req, res) => {
+ db.blogs.find({
+ }).then(done => {
+   res.send(done)
+ })
+},
+load: (req, res) => {
+  db.blogs.findOne({
+    _id: req.params.id
   }).then(done => {
-    res.send('saved')
+    res.send(done)
   })
  }
 }

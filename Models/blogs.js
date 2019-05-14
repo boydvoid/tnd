@@ -5,7 +5,7 @@ mongoose.set('useFindAndModify', false)
 const Schema = mongoose.Schema
 
 const blogSchema = new Schema ({
-	username: {type: String, required: true, unique: true}, 
+	username: {type: String, required: true }, 
 	blog: {type: String, required: true}, 
 	title: {type: String, required: true}, 
 	date: {type: Date, default: new Date()}

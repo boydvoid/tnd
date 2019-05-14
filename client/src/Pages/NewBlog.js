@@ -3,6 +3,9 @@ import BlogEditor from '../Components/BlogEditor/BlogEditor';
 import AdminNav from '../Components/AdminNav/AdminNav';
 
 class NewBlog extends Component {
+	componentDidMount() {
+		console.log(this.props)
+	}
 	render () {
 		return(
 			<div className="container-fluid">

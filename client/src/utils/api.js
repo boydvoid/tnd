@@ -17,5 +17,14 @@ export default {
   },
   saveBlog: data => {
     return axios.post(`/api/blog/save`, data)
+  },
+  loadBlogs: () => {
+    return axios.get(`/api/blog/loadall`)
+  },
+  loadBlog: data => {
+    return axios.get(`/api/blog/load/${data}`)
+  },
+  newBlog: data => {
+    return axios.post(`/api/blog/new`, data)
   }
 };

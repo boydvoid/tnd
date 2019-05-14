@@ -13,22 +13,34 @@ class BlogEditor extends Component {
   state = {
     editorState: EditorState.createEmpty(),
     editorHTML: {__html: '<div></div>'}, 
-    title: ""
+    titleInputVal: '',
+    id: ''
   }
 
   componentDidMount = () => {
-    if (localStorage.getItem('content')) {
-      let content = localStorage.getItem('content');
-      content = content.split(",")
-      console.log(content);
-      // const blocksFromHTML = htmlToDraft(content.html);
-      // const {contentBlocks, entityMap } = blocksFromHTML;
-      // const contentState= ContentState.createFromBlockArray(contentBlocks, entityMap);
-      // this.setState({
-      //   editorState: EditorState.createWithContent(contentState),
-      //   editorHTML: {__html: localStorage.getItem('content')}
-      // })
-    }
+    let url = window.location.href.split('/');
+
+    this.setState({
+      id: url[5]
+    })
+    
+    console.log(url)
+    api.loadBlog(url[5]).then(blog => {
+      console.log(blog.data)
+
+      this.setState({
+        titleInputVal: blog.data.title
+      })
+
+      const blocksFromHTML = htmlToDraft(blog.data.blog);
+      const {contentBlocks, entityMap } = blocksFromHTML;
+      const contentState= ContentState.createFromBlockArray(contentBlocks, entityMap);
+      this.setState({
+        editorState: EditorState.createWithContent(contentState),
+        editorHTML: {__html: blog.data.blog}
+      })
+      
+    })
   }
 
   onEditorStateChange = (editorState) => {
@@ -47,7 +59,8 @@ class BlogEditor extends Component {
    let data = {
      username: this.props.username,
      blog: draftToHtml(convertToRaw(this.state.editorState.getCurrentContent())),
-     title: this.state.title
+     title: this.state.titleInputVal,
+     id: this.state.id
    }
    api.saveBlog(data).then(res => {
      console.log(res)
@@ -55,9 +68,8 @@ class BlogEditor extends Component {
   }
 
   handleChange = event => {
-    const {name} = event.target;
     this.setState({
-      [name]: event.target.value
+      titleInputVal: event.target.value
     })
 
   }
@@ -66,7 +78,7 @@ class BlogEditor extends Component {
     return (
       <div>
       <div class="title">
-        <Input className="title-box" placeholder="Title" name="title" onChange={this.handleChange}/> 
+        <Input className="title-box" placeholder="Title"onChange={this.handleChange} value={this.state.titleInputVal}/> 
         <PBtn onClick={this.save}>Save</PBtn>
       </div>
       <div className="editorWrapper">

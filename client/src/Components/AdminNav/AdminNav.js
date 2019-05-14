@@ -1,4 +1,5 @@
 import React from 'react';
+import PBtn from '../PBtn/PBtn';
 
 const AdminNav = (props) => (
 	<nav class="navbar navbar-expand-lg navbar-light bg-light">
@@ -12,6 +13,7 @@ const AdminNav = (props) => (
       <a class="nav-item nav-link " href="/admin">Blog</a>
       <a class="nav-item nav-link" href="#">Media</a>
       <a class="nav-item nav-link" href="#">Products</a>
+      <button className="link" onClick={props.logout}>Logout</button>
     </div>
   </div>
 	</span>

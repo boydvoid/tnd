@@ -15,6 +15,7 @@
     "draftjs-to-html": "^0.8.4",
     "html-to-draftjs": "^1.4.0",
     "last-draft": "^3.3.0",
+    "lodash": "^4.17.11",
     "megadraft": "^0.6.3",
     "react": "^16.8.6",
     "react-dom": "^16.8.6",

@@ -6,11 +6,11 @@ class NewBlog extends Component {
 	render () {
 		return(
 			<div className="container-fluid">
-				<AdminNav />
+				<AdminNav logout={this.props.logout}/>
 				<div className="container">
 					<div className="row">
 						<div className="col-xl-12">
-							<BlogEditor/>
+							<BlogEditor username={this.props.username}/>
 						</div>
 					</div>
 				</div>

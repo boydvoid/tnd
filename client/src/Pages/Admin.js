@@ -9,7 +9,7 @@ class Admin extends Component {
 	render () {
 		return(
 			<div className="container-fluid admin">
-				<AdminNav />
+				<AdminNav logout={this.props.logout}/>
 				<div className="container">
 					<div className="row">
 						<div className="col-xl-12">

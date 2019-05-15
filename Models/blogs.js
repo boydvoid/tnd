@@ -9,7 +9,8 @@ const blogSchema = new Schema ({
 	blog: {type: String, required: true}, 
 	title: {type: String, required: true}, 
 	date: {type: String, default: convertDate()},
-	img: {type: String, required: false} 
+	img: {type: String, required: false},
+	live: {type: Boolean, required: true}
 })
 
 function convertDate() {

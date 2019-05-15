@@ -30,7 +30,8 @@ module.exports = {
  db.blogs.create({
    username: req.body.username,
    blog: "<p>New Blog</p>", 
-   title: req.body.title
+   title: req.body.title,
+   live: false
  }).then(done => {
    res.send(done)
  })

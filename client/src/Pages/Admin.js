@@ -25,12 +25,13 @@ class Admin extends Component {
 	newBlog = () => {
 		let data = {
 			username: this.props.username,
-			title: 'New Blog'
+			title: 'New Blog',
+			img: ''
 		}
 		api.newBlog(data).then(done => {
 			console.log(done)
 			this.loadBlogs();
-			
+
 		});
 	}
 

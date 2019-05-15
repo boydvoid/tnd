@@ -14,7 +14,8 @@ class BlogEditor extends Component {
     editorState: EditorState.createEmpty(),
     editorHTML: {__html: '<div></div>'}, 
     titleInputVal: '',
-    id: ''
+    id: '',
+    imageurl: ''
   }
 
   componentDidMount = () => {
@@ -29,7 +30,8 @@ class BlogEditor extends Component {
       console.log(blog.data)
 
       this.setState({
-        titleInputVal: blog.data.title
+        titleInputVal: blog.data.title,
+        imageurl: blog.data.img
       })
 
       const blocksFromHTML = htmlToDraft(blog.data.blog);
@@ -60,7 +62,8 @@ class BlogEditor extends Component {
      username: this.props.username,
      blog: draftToHtml(convertToRaw(this.state.editorState.getCurrentContent())),
      title: this.state.titleInputVal,
-     id: this.state.id
+     id: this.state.id,
+     img: this.state.imageurl
    }
    api.saveBlog(data).then(res => {
      console.log(res)
@@ -68,23 +71,27 @@ class BlogEditor extends Component {
   }
 
   handleChange = event => {
+    let {name} = event.target
     this.setState({
-      titleInputVal: event.target.value
+      [name]: event.target.value
+
     })
 
   }
   render() {
     const { editorState } = this.state;
     return (
-      <div>
+      <div className="editorContent">
       <div class="title">
-        <Input className="title-box" placeholder="Title"onChange={this.handleChange} value={this.state.titleInputVal}/> 
+        <Input className="title-box" placeholder="Title"onChange={this.handleChange} name="titleInputVal" value={this.state.titleInputVal}/> 
+        <Input placeholder="Image URL" className="img-input" value={this.state.imageurl} name="imageurl" onChange={this.handleChange}/>
         <PBtn onClick={this.save}>Save</PBtn>
       </div>
       <div className="editorWrapper">
         <Editor
           editorState={editorState}
           onEditorStateChange={this.onEditorStateChange}
+          toolbarClassName="toolbar-class"
         />
       </div>
       {/*Preview div*/}

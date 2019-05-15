@@ -1,18 +1,43 @@
 .editor {
 	border: 1px solid black;
 	text-align: start;
-	min-height: 10em;
+	min-height: 20em;
 	padding: 20px;
 }
 
 .public-DraftEditor-content {
-	min-height: 10em;
+	min-height: 40em;
 }
 
 .editorWrapper {
 	border: 1px solid black;
-	max-height: 300px;
+	display: flex;
+	width: 100%;
+	justify-content: center;
+	align-items: center;
+	padding: 20px;
+	max-width: 720px;
+}
+
+.rdw-editor-main {
+	height: 100%;
 	overflow: scroll;
+	box-sizing: border-box;
+	max-height: 500px;
+}
+
+
+.editorContent {
+	justify-content: center;
+	align-items: center;
+	display: flex;
+	align-content: center;
+	flex-direction: column;
+}
+
+.preview {
+	max-width: 700px;
+	padding: 20px;
 }
 
 .DraftEditor-root {
@@ -21,4 +46,8 @@
 
 .title-box {
 	border: 1px solid black;
+}
+
+.rdw-image-imagewrapper img {
+	max-width: 600px;
 }

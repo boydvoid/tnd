@@ -5,6 +5,7 @@ import Home from './Pages/Home'
 import Admin from './Pages/Admin';
 import Login from './Pages/Login'
 import NewBlog from './Pages/NewBlog';
+import BlogPage from './Pages/BlogPage';
 import api from "./utils/api";
 
 class App extends Component {
@@ -52,7 +53,7 @@ class App extends Component {
         <div className="App">
           <Switch>
             <Route path="/" exact component={Home} />
-          
+            <Route path="/blog/:id" exact component={BlogPage} />
             <Route exact path="/admin" render={() =>
                   loggedIn === true ? <Admin logout={this.logout} username={this.state.username}/> : <Login />
                 }

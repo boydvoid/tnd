@@ -18,7 +18,8 @@ module.exports = {
      db.blogs.update({
        username: req.body.username,
        blog: req.body.blog, 
-       title: req.body.title
+       title: req.body.title,
+       img: req.body.img
      }).then(done => {
        res.send(done)
      })

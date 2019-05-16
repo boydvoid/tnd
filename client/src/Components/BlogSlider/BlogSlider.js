@@ -6,12 +6,15 @@ const BlogSlider = (props) => (
 		<div className="row">
 		{
 			props.blogs.map((blog, index) => {
-				return (
-					<div className="col-xl-4">
-						<img className="slider-img" src={blog.img} alt=""/>	
-						<p><Link to={`/blog/${blog._id}`}>{blog.title}</Link></p>
-					</div>
+				if(blog.live){
+
+					return (
+						<div className="col-xl-4">
+							<img className="slider-img" src={blog.img} alt=""/>	
+							<p><Link to={`/blog/${blog._id}`}>{blog.title}</Link></p>
+						</div>
 				)
+			}
 			})
 		}
 		</div>	

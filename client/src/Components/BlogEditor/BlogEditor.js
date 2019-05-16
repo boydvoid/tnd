@@ -15,7 +15,8 @@ class BlogEditor extends Component {
     editorHTML: {__html: '<div></div>'}, 
     titleInputVal: '',
     id: '',
-    imageurl: ''
+    imageurl: '',
+    live: false
   }
 
   componentDidMount = () => {
@@ -31,7 +32,8 @@ class BlogEditor extends Component {
 
       this.setState({
         titleInputVal: blog.data.title,
-        imageurl: blog.data.img
+        imageurl: blog.data.img,
+        live: blog.data.live
       })
 
       const blocksFromHTML = htmlToDraft(blog.data.blog);
@@ -55,6 +57,29 @@ class BlogEditor extends Component {
     //need to test w/ localStorage
   };
 
+  toggleLive = () => {
+    let change;
+
+    if(this.state.live) {
+      change = false
+    } else {
+      change = true 
+    }
+    let data = {
+      username: this.props.username,
+      blog: draftToHtml(convertToRaw(this.state.editorState.getCurrentContent())),
+      title: this.state.titleInputVal,
+      id: this.state.id,
+      img: this.state.imageurl,
+      live: change
+    }
+    api.saveBlog(data).then(res => {
+      this.setState({
+        live: change
+      })
+    })
+
+  }
   save = () => {
     console.log('run save')
    // save to db 
@@ -86,6 +111,7 @@ class BlogEditor extends Component {
         <Input className="title-box" placeholder="Title"onChange={this.handleChange} name="titleInputVal" value={this.state.titleInputVal}/> 
         <Input placeholder="Image URL" className="img-input" value={this.state.imageurl} name="imageurl" onChange={this.handleChange}/>
         <PBtn onClick={this.save}>Save</PBtn>
+        <PBtn onClick={this.toggleLive}>Toggle Live</PBtn>
       </div>
       <div className="editorWrapper">
         <Editor

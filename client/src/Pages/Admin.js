@@ -26,7 +26,8 @@ class Admin extends Component {
 		let data = {
 			username: this.props.username,
 			title: 'New Blog',
-			img: ''
+			img: '',
+			live: false
 		}
 		api.newBlog(data).then(done => {
 			console.log(done)
@@ -55,6 +56,7 @@ class Admin extends Component {
 										<th scope="col">Created By</th>
 										<th scope="col">Date</th>
 										<th scope="col">Views</th>
+										<th scope="col">Live</th>
 									</tr>
 								</thead>
 								<tbody>
@@ -66,6 +68,8 @@ class Admin extends Component {
 													<td><Link to={`/admin/blog/${blog._id}`}>{blog.title}</Link></td>
 													<td>{blog.username}</td>
 													<td>{blog.date}</td>
+													<td>{blog.views}</td>
+													<td>{blog.live.toString()}</td>
 												</tr>
 											)
 										})

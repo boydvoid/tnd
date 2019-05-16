@@ -19,7 +19,8 @@ module.exports = {
        username: req.body.username,
        blog: req.body.blog, 
        title: req.body.title,
-       img: req.body.img
+       img: req.body.img,
+       live: req.body.live
      }).then(done => {
        res.send(done)
      })

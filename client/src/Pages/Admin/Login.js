@@ -1,6 +1,6 @@
 import React, { Component } from 'react';
-import Input from '../Components/Input/Input';
-import PBtn from '../Components/PBtn/PBtn';
+import Input from '../../Components/Input/Input';
+import PBtn from '../../Components/PBtn/PBtn';
 import './Login.css'
 class Login extends Component {
  render () {

@@ -2,9 +2,9 @@ import React, { Component } from 'react';
 import './App.css';
 import {BrowserRouter, Route, Switch, Redirect} from 'react-router-dom'
 import Home from './Pages/Home'
-import Admin from './Pages/Admin';
-import Login from './Pages/Login'
-import NewBlog from './Pages/NewBlog';
+import Admin from './Pages/Admin/Admin';
+import Login from './Pages/Admin/Login'
+import NewBlog from './Pages/Admin/NewBlog';
 import BlogPage from './Pages/BlogPage';
 import api from "./utils/api";
 

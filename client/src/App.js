@@ -1,4 +1,4 @@
-import React, { Component } from 'react';
+import React, { useState, useEffect } from 'react';
 import './App.css';
 import {BrowserRouter, Route, Switch, Redirect} from 'react-router-dom'
 import Home from './Pages/Home'
@@ -8,46 +8,37 @@ import NewBlog from './Pages/Admin/NewBlog';
 import BlogPage from './Pages/BlogPage';
 import api from "./utils/api";
 
-class App extends Component {
-  state= {
-    loggedIn: false,
-    username: '', 
-    email: ''
-  }
+const App = () => {
+  const [loggedIn, setLoggedIn] = useState(false)
+  const [username, setUsername] = useState('')
+  const [email, setEmail] = useState('')
 
-  componentWillMount = async () => {
-    this.checkLogin();
-  };
+  useEffect(() => {
+    checkLogin()
+  }, [])
+  
 
-  checkLogin = () => {
+  const checkLogin = () => {
     api.checkLogin().then(user => {
       if (user.data !== false) {
         api.findUserById(user.data).then(data => {
-          this.setState({
-            loggedIn: true,
-            username: data.data.username,
-            email: data.data.email,
-          });
+          setLoggedIn(true)
+          setUsername(data.data.username)
+          setEmail(data.data.email)
         });
       } else {
-        this.setState({
-          loggedIn: false,
-        });
+        setLoggedIn(false)
       }
     });
   };
 
-
-
-  logout = () => {
+  const logout = () => {
     api.logout().then(() => {
       // reload the window on sucessful logout
       window.location.reload();
     });
   }
 
-  render () {
-    const {loggedIn} = this.state;
     return (
       <BrowserRouter>
         <div className="App">
@@ -55,11 +46,11 @@ class App extends Component {
             <Route path="/" exact component={Home} />
             <Route path="/blog/:id" exact component={BlogPage} />
             <Route exact path="/admin" render={() =>
-                  loggedIn === true ? <Admin logout={this.logout} username={this.state.username}/> : <Login />
+                  loggedIn === true ? <Admin logout={logout} username={username}/> : <Login />
                 }
               />
             <Route exact path="/admin/blog/:id" render={() =>
-                  loggedIn === true ? <NewBlog logout={this.logout} username={this.state.username}/> : <Login /> 
+                  loggedIn === true ? <NewBlog logout={logout} username={username}/> : <Login /> 
                 }
               />
           </Switch>
@@ -67,5 +58,4 @@ class App extends Component {
       </BrowserRouter>
     )
   }
-}
 export default App;

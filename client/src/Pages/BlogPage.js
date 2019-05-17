@@ -1,4 +1,4 @@
-import React from 'react';
+import React, {useState, useEffect} from 'react';
 import MainNav from '../Components/MainNav/MainNav';
 import IconNav from '../Components/IconNav/IconNav';
 import api from '../utils/api';
@@ -7,41 +7,36 @@ import { Editor } from 'react-draft-wysiwyg';
 import draftToHtml from 'draftjs-to-html';
 import htmlToDraft from 'html-to-draftjs';
 
-class BlogPage extends React.Component {
-	state={
-		id: '',
-		editorHTML: {__html: '<div></div>'}, 
-		titleInputVal: '',
-		date: ''
-	}
-	componentDidMount = () => {
-    let url = window.location.href.split('/');
+const BlogPage = (props) => {
+	const [id, setId] = useState('')
+	const [editorHTML, setEditorHTML] = useState({__html: '<div></div>'})
+	const [titleInputVal, setTitleInputVal] = useState('')
+	const [date, setDate] = useState('')
+	const [imageUrl, setImageUrl]	 = useState('')
 
-    this.setState({
-      id: url[4]
-		})
+
+	useEffect(() => {
+
+    let url = window.location.href.split('/'); 
+
+		setId(url[4])
 		api.loadBlog(url[4]).then(blog => {
-      console.log(blog.data)
 
-      this.setState({
-        titleInputVal: blog.data.title,
-				imageurl: blog.data.img,
-				date: blog.data.date
-      })
+			
+			setTitleInputVal(blog.data.title)
+			setImageUrl(blog.data.img)
+			setDate(blog.data.date)
 
       const blocksFromHTML = htmlToDraft(blog.data.blog);
       const {contentBlocks, entityMap } = blocksFromHTML;
-      const contentState= ContentState.createFromBlockArray(contentBlocks, entityMap);
-      this.setState({
-        editorHTML: {__html: blog.data.blog}
-      })
-      
+			const contentState= ContentState.createFromBlockArray(contentBlocks, entityMap);
+			
+			setEditorHTML({__html: blog.data.blog})
     })
-
 		
-	}		
+	}, [])
+	
 
-	render() {
 		return (
 			<div className="blogPage">
 				<MainNav/>
@@ -49,11 +44,11 @@ class BlogPage extends React.Component {
 				<div className="container">
 					<div className="row">
 						<div className="col-xl-12 center">
-							<h1>{this.state.titleInputVal}</h1>
+							<h1>{titleInputVal}</h1>
 							<p>By: Jennifer Larson</p>	
-							<p>{this.state.date}</p>
+							<p>{date}</p>
 							<div className="preview">
-								<span dangerouslySetInnerHTML={this.state.editorHTML} />
+								<span dangerouslySetInnerHTML={editorHTML} />
 							</div>
 						</div>	
 					</div>	
@@ -61,6 +56,5 @@ class BlogPage extends React.Component {
 			</div>
 		)
 	}	
-}
 
 export default BlogPage;

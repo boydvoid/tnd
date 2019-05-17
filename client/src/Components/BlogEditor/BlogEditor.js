@@ -1,4 +1,4 @@
-import React, { Component } from 'react';
+import React, { useState, useEffect } from 'react';
 import { EditorState, convertToRaw, convertFromRaw, ContentState } from 'draft-js';
 import { Editor } from 'react-draft-wysiwyg';
 import draftToHtml from 'draftjs-to-html';
@@ -9,123 +9,115 @@ import Input from '../Input/Input.js'
 import _ from "lodash"
 import PBtn from '../PBtn/PBtn';
 import api from '../../utils/api';
-class BlogEditor extends Component {
-  state = {
-    editorState: EditorState.createEmpty(),
-    editorHTML: {__html: '<div></div>'}, 
-    titleInputVal: '',
-    id: '',
-    imageurl: '',
-    live: false
-  }
 
-  componentDidMount = () => {
+const BlogEditor = (props) => {
+
+  const [editorState,setEditorState ] = useState(EditorState.createEmpty())
+  const [editorHTML,setEditorHTML ] = useState({__html: '<div></div>'})
+  const [titleInputVal, setTitleInputVal] = useState('')
+  const [id, setId] = useState('')
+  const [imageurl, setImageurl] = useState('')
+  const [live, setLive] = useState(false)
+  
+  
+  useEffect(() => {
     let url = window.location.href.split('/');
 
-    this.setState({
-      id: url[5]
-    })
+    setId(url[5])
     
-    console.log(url)
     api.loadBlog(url[5]).then(blog => {
-      console.log(blog.data)
 
-      this.setState({
-        titleInputVal: blog.data.title,
-        imageurl: blog.data.img,
-        live: blog.data.live
-      })
+      setTitleInputVal(blog.data.title)
+      setImageurl(blog.data.img)
+      setLive(blog.data.live)
 
       const blocksFromHTML = htmlToDraft(blog.data.blog);
       const {contentBlocks, entityMap } = blocksFromHTML;
       const contentState= ContentState.createFromBlockArray(contentBlocks, entityMap);
-      this.setState({
-        editorState: EditorState.createWithContent(contentState),
-        editorHTML: {__html: blog.data.blog}
-      })
-      
-    })
-  }
 
-  onEditorStateChange = (editorState) => {
-    this.setState({
-      editorState,
-      editorHTML: {__html: draftToHtml(convertToRaw(editorState.getCurrentContent()))}
-    })
+      setEditorState(EditorState.createWithContent(contentState))
+      setEditorHTML({__html: blog.data.blog}) 
+    }) 
+  }, [])
+     
+
+
+  const onEditorStateChange = (editorState) => {
+
+    setEditorState(editorState)
+    setEditorHTML({__html: draftToHtml(convertToRaw(editorState.getCurrentContent()))})
     //save on update
     //need to debounce to save when youre done typing
     //need to test w/ localStorage
   };
 
-  toggleLive = () => {
+  const toggleLive = () => {
     let change;
 
-    if(this.state.live) {
+    if(live) {
       change = false
     } else {
       change = true 
     }
     let data = {
-      username: this.props.username,
-      blog: draftToHtml(convertToRaw(this.state.editorState.getCurrentContent())),
-      title: this.state.titleInputVal,
-      id: this.state.id,
-      img: this.state.imageurl,
+      username: props.username,
+      blog: draftToHtml(convertToRaw(editorState.getCurrentContent())),
+      title: titleInputVal,
+      id: id,
+      img: imageurl,
       live: change
     }
     api.saveBlog(data).then(res => {
-      this.setState({
-        live: change
-      })
+      setLive(change)
     })
 
   }
-  save = () => {
+  const save = () => {
     console.log('run save')
    // save to db 
    let data = {
-     username: this.props.username,
-     blog: draftToHtml(convertToRaw(this.state.editorState.getCurrentContent())),
-     title: this.state.titleInputVal,
-     id: this.state.id,
-     img: this.state.imageurl
+     username: props.username,
+     blog: draftToHtml(convertToRaw(editorState.getCurrentContent())),
+     title: titleInputVal,
+     id: id,
+     img: imageurl
    }
    api.saveBlog(data).then(res => {
      console.log(res)
    })
   }
 
-  handleChange = event => {
-    let {name} = event.target
-    this.setState({
-      [name]: event.target.value
+  const handleChange = event => {
+    if(event.target.name === 'titleInputVal'){
+      setTitleInputVal(event.target.value) 
+    }
 
-    })
-
+    
+    if(event.target.name === 'imageurl'){
+      setImageurl(event.target.value) 
+    }
   }
-  render() {
-    const { editorState } = this.state;
+
     return (
       <div className="editorContent">
       <div class="title">
-        <Input className="title-box" placeholder="Title"onChange={this.handleChange} name="titleInputVal" value={this.state.titleInputVal}/> 
-        <Input placeholder="Image URL" className="img-input" value={this.state.imageurl} name="imageurl" onChange={this.handleChange}/>
-        <PBtn onClick={this.save}>Save</PBtn>
-        <PBtn onClick={this.toggleLive}>Toggle Live</PBtn>
+        <Input className="title-box" placeholder="Title"onChange={handleChange} name="titleInputVal" value={titleInputVal}/> 
+        <Input placeholder="Image URL" className="img-input" value={imageurl} name="imageurl" onChange={handleChange}/>
+        <PBtn onClick={save}>Save</PBtn>
+        <PBtn onClick={toggleLive}>Toggle Live</PBtn>
       </div>
       <div className="editorWrapper">
         <Editor
           editorState={editorState}
-          onEditorStateChange={this.onEditorStateChange}
+          onEditorStateChange={onEditorStateChange}
           toolbarClassName="toolbar-class"
         />
       </div>
       {/*Preview div*/}
       <div className="preview">
-        <span dangerouslySetInnerHTML={this.state.editorHTML} />
+        <span dangerouslySetInnerHTML={editorHTML} />
       </div>
       </div>
     );
   }
-}
 export default BlogEditor;

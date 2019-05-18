@@ -10,21 +10,17 @@ module.exports = {
     }
   },
  save: (req, res) => {
-   console.log(req.body)
-   db.blogs.findOne({
-     _id: req.body.id
-   }).then(found => {
-     
-     db.blogs.update({
-       username: req.body.username,
-       blog: req.body.blog, 
-       title: req.body.title,
-       img: req.body.img,
-       live: req.body.live
+     db.blogs.updateOne({_id: req.body.id}, {
+       $set: {
+         username: req.body.username,
+         blog: req.body.blog, 
+         title: req.body.title,
+         img: req.body.img,
+         live: req.body.live
+        }
      }).then(done => {
        res.send(done)
      })
-   })
  },
  new: (req, res) => {
   console.log(req.body)

@@ -1,0 +1,36 @@
+.navbar {
+	background-color: #A679FF;
+	font-size: 13px;
+	font-family: 'Montserrat', sans-serif;
+	height: 50px;
+}
+
+.navbar ul {
+	list-style-type: none;
+}
+
+.navbar ul li {
+	float: left;
+	padding: 0 10px;
+}
+
+.navbar a {
+	color: #ffffff;
+}
+
+.navbar .searchBar {
+	background-color: #9561FE;
+	color: #ffffff;
+	width: 100%;
+	left: 0;
+	position: relative;
+}
+
+.navbar .searchBar:focus {
+	transform: scale(1.2);
+}
+
+.navbar .searchBar::placeholder {
+	color: #ffffff;
+	font-family: 'Montserrat', sans-serif;
+}

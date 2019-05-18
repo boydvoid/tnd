@@ -2750,6 +2750,11 @@ vary@~1.1.2:
   resolved "https://registry.yarnpkg.com/vary/-/vary-1.1.2.tgz#2299f02c6ded30d4a5961b0b9f74524a18f634fc"
   integrity sha1-IpnwLG3tMNSllhsLn3RSShj2NPw=
 
+visual-a@0.0.2:
+  version "0.0.2"
+  resolved "https://registry.yarnpkg.com/visual-a/-/visual-a-0.0.2.tgz#a493c3bf0d0cc70547c1ba2f3a48f8f40e057cf1"
+  integrity sha512-z5HR0kFJbr5NWAJSOw27t2a4L6OaIA/im6vn6QONObTGrbqSU6N6WO3P1s7wyQifJ9JWygDcP73JUXmt2X5Xxg==
+
 whatwg-fetch@>=0.10.0:
   version "3.0.0"
   resolved "https://registry.yarnpkg.com/whatwg-fetch/-/whatwg-fetch-3.0.0.tgz#fc804e458cc460009b1a2b966bc8817d2578aefb"

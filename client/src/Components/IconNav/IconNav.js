@@ -20,6 +20,7 @@ const IconNav = (props) => (
 			</ul>	
 		</span>
 	</div>
+
 )
 
 export default IconNav;

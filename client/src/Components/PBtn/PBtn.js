@@ -1,5 +1,30 @@
 import React from 'react';
 import './PBtn.css'
-const PBtn = (props) => <button type={props.type} className={`primary-button ${props.className}`} onClick={props.onClick}>{props.children}</button>
+import {Link} from 'react-router-dom'
+const PBtn = (props) => (
+
+<React.Fragment>
+{
+	props.link === undefined ? 
+<button type={props.type} className={`primary-button ${props.className}`} onClick={props.onClick}>{props.children}</button>	
+	: 
+	""	
+}
+{
+	props.external  ? 
+<a href={props.link} className={`anchor ${props.className}`} target={props.external ? "_blank" : ""}>{props.children}</a>
+: 
+""
+}
+
+{
+	props.external === false ? 
+<Link href={props.link} className={`anchor ${props.className}`} target={props.external ? "_blank" : ""}>{props.children}</Link>
+:
+""
+}
+</React.Fragment>
+
+)
 
 export default PBtn;

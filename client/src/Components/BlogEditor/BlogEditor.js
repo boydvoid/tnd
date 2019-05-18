@@ -9,7 +9,7 @@ import Input from '../Input/Input.js'
 import _ from "lodash"
 import PBtn from '../PBtn/PBtn';
 import api from '../../utils/api';
-
+import {Button} from "@blueprintjs/core"
 const BlogEditor = (props) => {
 
   const [editorState,setEditorState ] = useState(EditorState.createEmpty())
@@ -38,6 +38,10 @@ const BlogEditor = (props) => {
       setEditorState(EditorState.createWithContent(contentState))
       setEditorHTML({__html: blog.data.blog}) 
     }) 
+
+    return () => {
+      console.log('cleaning up');
+    }
   }, [])
      
 
@@ -80,7 +84,8 @@ const BlogEditor = (props) => {
      blog: draftToHtml(convertToRaw(editorState.getCurrentContent())),
      title: titleInputVal,
      id: id,
-     img: imageurl
+     img: imageurl,
+     live: live
    }
    api.saveBlog(data).then(res => {
      console.log(res)

@@ -16,20 +16,7 @@ class CollectionSlider extends Component {
 	render () {
 		return (
 			<div className="container-fluid grey">
-			<CarouselProvider
-        naturalSlideWidth={100}
-        naturalSlideHeight={125}
-        totalSlides={this.state.images.length}
-				>
-        <Slider>
-					{
-						this.state.images.map((img,index) => {
-							return <Slide index={index}><img src={img} alt=""/></Slide>
-						})
-					}
-        </Slider>
-				</CarouselProvider>
-					<PBtn>Visit My Shop</PBtn>
+		
 			</div>
 		)
 	}

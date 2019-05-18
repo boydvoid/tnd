@@ -6,10 +6,10 @@ const BlogSlider = (props) => (
 		<div className="row">
 		{
 			props.blogs.map((blog, index) => {
-				if(blog.live){
+				if(blog.live && index < 6){
 
 					return (
-						<div className="col-xl-4">
+						<div className="col-xl-4" key={index}>
 							<img className="slider-img" src={blog.img} alt=""/>	
 							<p><Link to={`/blog/${blog._id}`}>{blog.title}</Link></p>
 						</div>

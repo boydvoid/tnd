@@ -22,7 +22,14 @@ const BlogPage = (props) => {
 
 		setId(url[4])
 		api.loadBlog(url[4]).then(blog => {
+			let viewsUpdate = {
+        id: url[4],
+        views: blog.data.views + 1
+      }
 
+      api.updateViews(viewsUpdate).then(done => {
+        console.log('updated views')
+      })
 			
 			setTitleInputVal(blog.data.title)
 			setImageUrl(blog.data.img)

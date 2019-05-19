@@ -18,6 +18,10 @@ router
   .post(blogController.save);
 
 	router
+  .route('/blog/views')
+  .post(blogController.updateViews);
+
+	router
   .route('/blog/new')
   .post(blogController.new);
 module.exports = router;

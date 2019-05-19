@@ -4,9 +4,11 @@ import PBtn from '../../Components/PBtn/PBtn';
 import {Link} from 'react-router-dom'
 import './Admin.css'
 import api from '../../utils/api';
+import Navbar from '../../Components/Navbar/Navbar'
+import SideMenu from './SideMenu'
 const Admin = (props) => {
 	const [blogs, setBlogs] = useState([]);
-	const [th, setTh] = useState(['Number', 'Title', 'Created By', 'Date', 'Views', 'Live']);
+	const [th, setTh] = useState(['Number', 'Title', 'Created By', 'Date', 'Views', 'Live', 'Category']);
 
 	useEffect(() => {
 		loadBlogs();
@@ -23,7 +25,9 @@ const Admin = (props) => {
 			username: props.username,
 			title: 'New Blog',
 			img: '',
-			live: false
+			live: false,
+      views: 0,
+      category: 'Reading'
 		}
 		api.newBlog(data).then(done => {
 			console.log(done)
@@ -34,15 +38,20 @@ const Admin = (props) => {
 
 		return(
 			<div className="container-fluid admin">
-				<AdminNav logout={props.logout}/>
+				<SideMenu/>
+			<Navbar position="right" title="Admin">
+					<PBtn onClick={props.logout}>Logout</PBtn>
+				</Navbar>
 				<div className="container">
 					<div className="row">
 						<div className="col-xl-12">
-							Admin Home
-							<PBtn onClick={newBlog}>New Blog</PBtn>
-
 							<div className="blogs">
-							<h2>Blogs</h2>	
+								<div className="blogs-header-bar">
+									<h2>Blogs</h2>	
+									<span className="ml-auto">
+										<PBtn onClick={newBlog}>New Blog</PBtn>
+									</span>
+								</div>
 							<table class="table">
 								<thead>
 									<tr>
@@ -66,6 +75,7 @@ const Admin = (props) => {
 													<td>{blog.date}</td>
 													<td>{blog.views}</td>
 													<td>{blog.live.toString()}</td>
+													<td>{blog.category}</td>
 												</tr>
 											)
 										})

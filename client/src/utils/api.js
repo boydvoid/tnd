@@ -26,5 +26,8 @@ export default {
   },
   newBlog: data => {
     return axios.post(`/api/blog/new`, data)
+  },
+  updateViews: data => {
+    return axios.post(`/api/blog/views`, data)
   }
 };

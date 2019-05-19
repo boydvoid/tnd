@@ -28,7 +28,9 @@ module.exports = {
    username: req.body.username,
    blog: "<p>New Blog</p>", 
    title: req.body.title,
-   live: false
+   live: false,
+   views: 0,
+   category: 'Reading'
  }).then(done => {
    res.send(done)
  })
@@ -39,6 +41,15 @@ module.exports = {
    res.send(done)
  })
 },
+ updateViews: (req, res) => {
+     db.blogs.updateOne({_id: req.body.id}, {
+       $set: {
+         views: req.body.views
+        }
+     }).then(done => {
+       res.send(done)
+     })
+ },
 load: (req, res) => {
   db.blogs.findOne({
     _id: req.params.id

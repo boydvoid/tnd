@@ -9,7 +9,7 @@ import Input from '../Input/Input.js'
 import _ from "lodash"
 import PBtn from '../PBtn/PBtn';
 import api from '../../utils/api';
-import {Button} from "@blueprintjs/core"
+
 const BlogEditor = (props) => {
 
   const [editorState,setEditorState ] = useState(EditorState.createEmpty())
@@ -18,13 +18,13 @@ const BlogEditor = (props) => {
   const [id, setId] = useState('')
   const [imageurl, setImageurl] = useState('')
   const [live, setLive] = useState(false)
-  
-  
+
+
   useEffect(() => {
     let url = window.location.href.split('/');
 
     setId(url[5])
-    
+
     api.loadBlog(url[5]).then(blog => {
 
       setTitleInputVal(blog.data.title)
@@ -36,15 +36,13 @@ const BlogEditor = (props) => {
       const contentState= ContentState.createFromBlockArray(contentBlocks, entityMap);
 
       setEditorState(EditorState.createWithContent(contentState))
-      setEditorHTML({__html: blog.data.blog}) 
-    }) 
+      setEditorHTML({__html: blog.data.blog})
+    })
 
     return () => {
       console.log('cleaning up');
     }
   }, [])
-     
-
 
   const onEditorStateChange = (editorState) => {
 
@@ -61,7 +59,7 @@ const BlogEditor = (props) => {
     if(live) {
       change = false
     } else {
-      change = true 
+      change = true
     }
     let data = {
       username: props.username,
@@ -76,9 +74,10 @@ const BlogEditor = (props) => {
     })
 
   }
+
   const save = () => {
     console.log('run save')
-   // save to db 
+   // save to db
    let data = {
      username: props.username,
      blog: draftToHtml(convertToRaw(editorState.getCurrentContent())),
@@ -94,34 +93,35 @@ const BlogEditor = (props) => {
 
   const handleChange = event => {
     if(event.target.name === 'titleInputVal'){
-      setTitleInputVal(event.target.value) 
+      setTitleInputVal(event.target.value)
     }
 
-    
     if(event.target.name === 'imageurl'){
-      setImageurl(event.target.value) 
+      setImageurl(event.target.value)
     }
   }
 
     return (
       <div className="editorContent">
-      <div class="title">
-        <Input className="title-box" placeholder="Title"onChange={handleChange} name="titleInputVal" value={titleInputVal}/> 
-        <Input placeholder="Image URL" className="img-input" value={imageurl} name="imageurl" onChange={handleChange}/>
-        <PBtn onClick={save}>Save</PBtn>
-        <PBtn onClick={toggleLive}>Toggle Live</PBtn>
-      </div>
-      <div className="editorWrapper">
-        <Editor
-          editorState={editorState}
-          onEditorStateChange={onEditorStateChange}
-          toolbarClassName="toolbar-class"
-        />
-      </div>
-      {/*Preview div*/}
-      <div className="preview">
-        <span dangerouslySetInnerHTML={editorHTML} />
-      </div>
+        <div class="title">
+          <Input className="title-box" placeholder="Title"onChange={handleChange} name="titleInputVal" value={titleInputVal}/>
+        </div>
+        <div className="editorWrapper">
+          <Editor
+            editorState={editorState}
+            onEditorStateChange={onEditorStateChange}
+            toolbarClassName="toolbar-class"
+          />
+          <div>
+            <Input placeholder="Image URL" className="img-input" value={imageurl} name="imageurl" onChange={handleChange}/>
+            <PBtn onClick={save}>Save</PBtn>
+            <PBtn onClick={toggleLive}>Toggle Live</PBtn>
+          </div>
+        </div>
+        {/*Preview div*/}
+        <div className="preview">
+          <span dangerouslySetInnerHTML={editorHTML} />
+        </div>
       </div>
     );
   }

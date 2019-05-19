@@ -10,13 +10,12 @@
 }
 
 .editorWrapper {
-	border: 1px solid black;
 	display: flex;
 	width: 100%;
 	justify-content: center;
 	align-items: center;
 	padding: 20px;
-	max-width: 720px;
+	max-width: 70em;
 }
 
 .rdw-editor-main {

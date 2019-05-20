@@ -18,6 +18,10 @@
 	max-width: 70em;
 }
 
+.megadraft {
+	width: 100%;
+}
+
 .rdw-editor-main {
 	height: 100%;
 	overflow: scroll;

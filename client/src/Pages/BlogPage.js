@@ -11,7 +11,7 @@ import Input from '../Components/Input/Input'
 import './BlogPage.css'
 const BlogPage = (props) => {
 	const [id, setId] = useState('')
-	const [editorHTML, setEditorHTML] = useState({ __html: '<div></div>' })
+	const [editorHTML, setEditorHTML] = useState({ __html: '<p></p>' } )
 	const [titleInputVal, setTitleInputVal] = useState('')
 	const [date, setDate] = useState('')
 	const [imageUrl, setImageUrl] = useState('')
@@ -36,9 +36,6 @@ const BlogPage = (props) => {
 			setImageUrl(blog.data.img)
 			setDate(blog.data.date)
 
-			const blocksFromHTML = htmlToDraft(blog.data.blog);
-			const { contentBlocks, entityMap } = blocksFromHTML;
-			const contentState = ContentState.createFromBlockArray(contentBlocks, entityMap);
 
 			setEditorHTML({ __html: blog.data.blog })
 		})

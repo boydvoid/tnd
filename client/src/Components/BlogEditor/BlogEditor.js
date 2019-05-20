@@ -9,11 +9,12 @@ import Input from '../Input/Input.js'
 import _ from "lodash"
 import PBtn from '../PBtn/PBtn';
 import api from '../../utils/api';
-import { MegadraftEditor, editorStateFromRaw } from "megadraft";
-import '../../../node_modules/megadraft/dist/css/megadraft.css'
+import CKEditor from '@ckeditor/ckeditor5-react';
+import ClassicEditor from '@ckeditor/ckeditor5-build-classic';
 const BlogEditor = (props) => {
 
-  const [editorState, setEditorState] = useState(EditorState.createEmpty())
+  // const [editorState, setEditorState] = useState(EditorState.createEmpty())
+  const [editorState, setEditorState] = useState('<p></p>')
   const [editorHTML, setEditorHTML] = useState({ __html: '<div></div>' })
   const [titleInputVal, setTitleInputVal] = useState('')
   const [id, setId] = useState('')
@@ -32,12 +33,14 @@ const BlogEditor = (props) => {
       setImageurl(blog.data.img)
       setLive(blog.data.live)
 
-      const blocksFromHTML = htmlToDraft(blog.data.blog);
-      const { contentBlocks, entityMap } = blocksFromHTML;
-      const contentState = ContentState.createFromBlockArray(contentBlocks, entityMap);
+    //   const blocksFromHTML = htmlToDraft(blog.data.blog);
+    //   const { contentBlocks, entityMap } = blocksFromHTML;
+    //   const contentState = ContentState.createFromBlockArray(contentBlocks, entityMap);
 
-      setEditorState(EditorState.createWithContent(contentState))
-      setEditorHTML({ __html: blog.data.blog })
+    //  setEditorState(EditorState.createWithContent(contentState))
+    // setEditorHTML({ __html: blog.data.blog })
+    setEditorState(blog.data.blog)
+    console.log(blog.data.blog)
     })
 
     return () => {
@@ -64,7 +67,7 @@ const BlogEditor = (props) => {
     }
     let data = {
       username: props.username,
-      blog: draftToHtml(convertToRaw(editorState.getCurrentContent())),
+      blog: editorState,
       title: titleInputVal,
       id: id,
       img: imageurl,
@@ -81,7 +84,7 @@ const BlogEditor = (props) => {
     // save to db
     let data = {
       username: props.username,
-      blog: draftToHtml(convertToRaw(editorState.getCurrentContent())),
+      blog: editorState,
       title: titleInputVal,
       id: id,
       img: imageurl,
@@ -107,20 +110,31 @@ const BlogEditor = (props) => {
       <div class="title">
         <Input className="title-box" placeholder="Title" onChange={handleChange} name="titleInputVal" value={titleInputVal} />
       </div>
+        <div>
+          <Input placeholder="Image URL" className="img-input" value={imageurl} name="imageurl" onChange={handleChange} />
+          <PBtn onClick={save}>Save</PBtn>
+          <PBtn onClick={toggleLive}>Toggle Live</PBtn>
+        </div>
       <div className="editorWrapper">
         {/* <Editor
             editorState={editorState}
             onEditorStateChange={onEditorStateChange}
             toolbarClassName="toolbar-class"
           /> */}
-        <MegadraftEditor
-          editorState={editorState}
-          onChange={onEditorStateChange} />
-        <div>
-          <Input placeholder="Image URL" className="img-input" value={imageurl} name="imageurl" onChange={handleChange} />
-          <PBtn onClick={save}>Save</PBtn>
-          <PBtn onClick={toggleLive}>Toggle Live</PBtn>
-        </div>
+        <CKEditor
+          editor={ ClassicEditor }
+          data={editorState}
+          onInit={ editor => {
+              // You can store the "editor" and use when it is needed.
+              console.log( 'Editor is ready to use!', editor );
+          } }
+          onChange={ ( event, editor ) => {
+              const data = editor.getData();
+              setEditorState(data)
+              console.log( { event, editor, data } );
+          } }
+        />
+      
       </div>
       {/*Preview div*/}
       <div className="preview">

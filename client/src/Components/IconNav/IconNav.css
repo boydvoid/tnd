@@ -3,6 +3,7 @@
 	max-height: 200px;
 	height: 100%;
 	padding: 50px;
+	border-bottom: 1px solid #C6C6C6;
 }
 
 .icon-nav .logo {

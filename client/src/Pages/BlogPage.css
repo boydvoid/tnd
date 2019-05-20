@@ -1,4 +1,7 @@
-.blog-container{
+.blog-container .preview {
+	display: flex;
+	flex-direction: column;
+	align-items: center;
 }
 
 .blog-container ul{
@@ -29,6 +32,27 @@
 	width: 100%;
 }
 
-.blog-container .preview img{
-	max-width: 400px;
+
+.blog-container .preview .image-style-side{
+	float: right;
+}
+
+.blog-container .preview .image img{
+	max-width: 900px;
+}
+
+.blog-container .preview .image-style-side img{
+	width: 30em;
+	max-width: 30em;
+}
+
+.blog-container .preview {
+	max-width: 900px;
+	padding: 20px;
+}
+
+.blog-container .preview figure{
+	align-items: center;
+	display: flex;
+	justify-content: center;
 }

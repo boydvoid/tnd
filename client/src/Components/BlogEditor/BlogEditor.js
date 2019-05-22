@@ -103,12 +103,11 @@ const BlogEditor = (props) => {
         <PBtn onClick={save}>Save</PBtn>
         <PBtn onClick={toggleLive}>Toggle Live</PBtn>
       </div>
-      <div class="title">
-        <Input className="title-box" placeholder="Title" onChange={handleChange} name="titleInputVal" value={titleInputVal} />
-      </div>
       <div className="editorWrapper">
         <div>
-          <h1 style={{ textAlign: 'center' }}>{titleInputVal}</h1>
+          <div class="title">
+            <Input className="title-box" placeholder="Title" onChange={handleChange} name="titleInputVal" value={titleInputVal} />
+          </div>
           <CKEditor
             editor={BaloonEditor}
             data={editorState}

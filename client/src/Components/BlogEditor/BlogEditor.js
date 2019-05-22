@@ -1,8 +1,6 @@
 import React, { useState, useEffect } from 'react';
 import { EditorState, convertToRaw, convertFromRaw, ContentState } from 'draft-js';
-import { Editor } from 'react-draft-wysiwyg';
 import draftToHtml from 'draftjs-to-html';
-import htmlToDraft from 'html-to-draftjs';
 import '../../../node_modules/react-draft-wysiwyg/dist/react-draft-wysiwyg.css'
 import './BlogEditor.css'
 import Input from '../Input/Input.js'
@@ -10,18 +8,15 @@ import _ from "lodash"
 import PBtn from '../PBtn/PBtn';
 import api from '../../utils/api';
 import CKEditor from '@ckeditor/ckeditor5-react';
-import ClassicEditor from '@ckeditor/ckeditor5-build-classic';
 import BaloonEditor from '@ckeditor/ckeditor5-build-balloon-block'
 const BlogEditor = (props) => {
 
-  // const [editorState, setEditorState] = useState(EditorState.createEmpty())
   const [editorState, setEditorState] = useState('<p></p>')
   const [editorHTML, setEditorHTML] = useState({ __html: '<div></div>' })
   const [titleInputVal, setTitleInputVal] = useState('')
   const [id, setId] = useState('')
   const [imageurl, setImageurl] = useState('')
   const [live, setLive] = useState(false)
-
 
   useEffect(() => {
     let url = window.location.href.split('/');
@@ -34,14 +29,8 @@ const BlogEditor = (props) => {
       setImageurl(blog.data.img)
       setLive(blog.data.live)
 
-    //   const blocksFromHTML = htmlToDraft(blog.data.blog);
-    //   const { contentBlocks, entityMap } = blocksFromHTML;
-    //   const contentState = ContentState.createFromBlockArray(contentBlocks, entityMap);
-
-    //  setEditorState(EditorState.createWithContent(contentState))
-    // setEditorHTML({ __html: blog.data.blog })
-    setEditorState(blog.data.blog)
-    console.log(blog.data.blog)
+      setEditorState(blog.data.blog)
+      console.log(blog.data.blog)
     })
 
     return () => {
@@ -66,6 +55,7 @@ const BlogEditor = (props) => {
     } else {
       change = true
     }
+
     let data = {
       username: props.username,
       blog: editorState,
@@ -108,42 +98,38 @@ const BlogEditor = (props) => {
 
   return (
     <div className="editorContent">
+      <div className="sidebar">
+        <Input placeholder="Image URL" className="img-input" value={imageurl} name="imageurl" onChange={handleChange} />
+        <PBtn onClick={save}>Save</PBtn>
+        <PBtn onClick={toggleLive}>Toggle Live</PBtn>
+      </div>
       <div class="title">
         <Input className="title-box" placeholder="Title" onChange={handleChange} name="titleInputVal" value={titleInputVal} />
       </div>
-        <div>
-          <Input placeholder="Image URL" className="img-input" value={imageurl} name="imageurl" onChange={handleChange} />
-          <PBtn onClick={save}>Save</PBtn>
-          <PBtn onClick={toggleLive}>Toggle Live</PBtn>
-        </div>
       <div className="editorWrapper">
-        {/* <Editor
-            editorState={editorState}
-            onEditorStateChange={onEditorStateChange}
-            toolbarClassName="toolbar-class"
-          /> */}
-          <div>
-          <h1 style={{textAlign: 'center'}}>{titleInputVal}</h1>
-        <CKEditor
-          editor={ BaloonEditor }
-          data={editorState}
-          onInit={ editor => {
-            // You can store the "editor" and use when it is needed.
-            console.log( 'Editor is ready to use!', editor );
-          } }
-          onChange={ ( event, editor ) => {
-            const data = editor.getData();
-            setEditorState(data)
-            console.log( { event, editor, data } );
-          } }
+        <div>
+          <h1 style={{ textAlign: 'center' }}>{titleInputVal}</h1>
+          <CKEditor
+            editor={BaloonEditor}
+            data={editorState}
+            onInit={editor => {
+              // You can store the "editor" and use when it is needed.
+              console.log('Editor is ready to use!', editor);
+            }}
+            onChange={(event, editor) => {
+              const data = editor.getData();
+              setEditorState(data)
+              console.log({ event, editor, data });
+            }}
           />
-      
-          </div>
+
+        </div>
       </div>
-      {/*Preview div*/}
+
       <div className="preview">
         <span dangerouslySetInnerHTML={editorHTML} />
       </div>
+
     </div>
   );
 }

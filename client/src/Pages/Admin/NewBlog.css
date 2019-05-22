@@ -1,3 +1,12 @@
 .new-blog {
 	background-color: #EEEEEE;
 }
+
+.sidebar{
+	max-width: 300px;
+	position: fixed;
+	height: 100vh;
+	width: 100%;
+	top: 50px;
+	left: 0;
+}

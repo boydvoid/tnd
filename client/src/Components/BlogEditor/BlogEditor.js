@@ -11,6 +11,7 @@ import PBtn from '../PBtn/PBtn';
 import api from '../../utils/api';
 import CKEditor from '@ckeditor/ckeditor5-react';
 import ClassicEditor from '@ckeditor/ckeditor5-build-classic';
+import BaloonEditor from '@ckeditor/ckeditor5-build-balloon-block'
 const BlogEditor = (props) => {
 
   // const [editorState, setEditorState] = useState(EditorState.createEmpty())
@@ -121,20 +122,23 @@ const BlogEditor = (props) => {
             onEditorStateChange={onEditorStateChange}
             toolbarClassName="toolbar-class"
           /> */}
+          <div>
+          <h1 style={{textAlign: 'center'}}>{titleInputVal}</h1>
         <CKEditor
-          editor={ ClassicEditor }
+          editor={ BaloonEditor }
           data={editorState}
           onInit={ editor => {
-              // You can store the "editor" and use when it is needed.
-              console.log( 'Editor is ready to use!', editor );
+            // You can store the "editor" and use when it is needed.
+            console.log( 'Editor is ready to use!', editor );
           } }
           onChange={ ( event, editor ) => {
-              const data = editor.getData();
-              setEditorState(data)
-              console.log( { event, editor, data } );
+            const data = editor.getData();
+            setEditorState(data)
+            console.log( { event, editor, data } );
           } }
-        />
+          />
       
+          </div>
       </div>
       {/*Preview div*/}
       <div className="preview">

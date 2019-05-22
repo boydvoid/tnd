@@ -1,5 +1,4 @@
 .navbar {
-	background-color: #A679FF;
 	font-size: 13px;
 	font-family: 'Montserrat', sans-serif;
 	height: 50px;
@@ -33,4 +32,11 @@
 .navbar .searchBar::placeholder {
 	color: #ffffff;
 	font-family: 'Montserrat', sans-serif;
+}
+
+.navbar button {
+	background: none;
+	color: black;
+	font-weight: 700;
+	padding: 0;
 }

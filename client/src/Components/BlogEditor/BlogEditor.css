@@ -15,7 +15,11 @@
 	justify-content: center;
 	align-items: center;
 	padding: 20px;
+	flex-direction: column;
 	max-width: 70em;
+	background-color: #ffffff;
+	border: 1px solid #c6c6c6;
+	border-radius: 20px 20px 0 0;
 }
 
 .rdw-editor-main {

@@ -9,6 +9,8 @@ import PBtn from '../PBtn/PBtn';
 import api from '../../utils/api';
 import CKEditor from '@ckeditor/ckeditor5-react';
 import BaloonEditor from '@ckeditor/ckeditor5-build-balloon-block'
+import ToggleSwitch from '../ToggleSwitch/ToggleSwitch';
+
 const BlogEditor = (props) => {
 
   const [editorState, setEditorState] = useState('<p></p>')
@@ -17,6 +19,7 @@ const BlogEditor = (props) => {
   const [id, setId] = useState('')
   const [imageurl, setImageurl] = useState('')
   const [live, setLive] = useState(false)
+  const [checked, setChecked] = useState(false)
 
   useEffect(() => {
     let url = window.location.href.split('/');
@@ -30,7 +33,11 @@ const BlogEditor = (props) => {
       setLive(blog.data.live)
 
       setEditorState(blog.data.blog)
-      console.log(blog.data.blog)
+      if(blog.data.live === true) {
+        setChecked(true)
+      } else {
+        setChecked(false)
+      }
     })
 
     return () => {
@@ -66,6 +73,11 @@ const BlogEditor = (props) => {
     }
     api.saveBlog(data).then(res => {
       setLive(change)
+      if(checked === true) {
+        setChecked(false)
+      } else {
+        setChecked(true)
+      }
     })
 
   }
@@ -95,15 +107,17 @@ const BlogEditor = (props) => {
       setImageurl(event.target.value)
     }
   }
+  
 
   return (
     <div className="editorContent">
       <div className="sidebar">
-        <Input placeholder="Image URL" className="img-input" value={imageurl} name="imageurl" onChange={handleChange} />
         <PBtn onClick={save}>Save</PBtn>
-        <PBtn onClick={toggleLive}>Toggle Live</PBtn>
+        <PBtn onClick={toggleLive}>Preview</PBtn>
+        <Input placeholder="Image URL" className="img-input" value={imageurl} name="imageurl" onChange={handleChange} />
       </div>
       <div className="editorWrapper">
+        <ToggleSwitch checkboxChange={toggleLive} checked={checked}/>
         <div>
           <div class="title">
             <Input className="title-box" placeholder="Title" onChange={handleChange} name="titleInputVal" value={titleInputVal} />

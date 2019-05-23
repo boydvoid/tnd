@@ -14,12 +14,16 @@
 	width: 100%;
 	justify-content: center;
 	align-items: center;
-	padding: 20px;
+	padding: 50px;
 	flex-direction: column;
-	max-width: 70em;
+	max-width: 80em;
 	background-color: #ffffff;
-	border: 1px solid #c6c6c6;
+  box-shadow: 0 3px 6px #00000040;
 	border-radius: 20px 20px 0 0;
+}
+
+.editorWrapper image {
+  max-width: 720px;
 }
 
 .rdw-editor-main {

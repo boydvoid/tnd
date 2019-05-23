@@ -40,3 +40,10 @@
 	font-weight: 700;
 	padding: 0;
 }
+
+.navbar a {
+	background: none;
+	color: black;
+	font-weight: 700;
+	padding: 0;
+}

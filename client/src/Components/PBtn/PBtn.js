@@ -20,6 +20,7 @@ const PBtn = (props) => (
 		{
 			props.external === false ?
 				<Link to={props.link} className={`anchor ${props.className}`} target={props.external ? "_blank" : ""}>{props.children}</Link>
+
 				:
 				""
 		}

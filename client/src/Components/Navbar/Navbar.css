@@ -37,18 +37,23 @@
 
 .navbar button {
 	background: none;
-	color: black;
+	color: #ffffff;
 	font-weight: 700;
 	padding: 0;
 }
 
 .navbar a {
 	background: none;
-	color: black;
+	color: #ffffff;
 	font-weight: 700;
 	padding: 0;
 }
 
  .admin-nav{
 	border-bottom: 1px solid #c6c6c6;
+}
+
+.navbar .title{
+	font-weight: 700;
+	color: #ffffff;
 }

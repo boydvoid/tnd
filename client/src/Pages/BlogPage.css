@@ -30,6 +30,7 @@
 	padding: 3em;
 	border-bottom: 1px solid #C6c6c6;
 	width: 100%;
+	margin-bottom: 3em;
 }
 
 
@@ -47,8 +48,7 @@
 }
 
 .blog-container .preview {
-	max-width: 900px;
-	padding: 20px;
+	max-width: 65em;
 }
 
 .blog-container .preview figure{

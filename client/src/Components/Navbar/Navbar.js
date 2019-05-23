@@ -9,16 +9,21 @@ const Navbar = (props) => {
 			{
 				props.brand !== undefined ?
 					<span>
-
 						<PBtn link="/admin" >
 							<img src={props.brand} width="30" height="30" alt="" />
 						</PBtn>
-						{props.title}
+
+						<span className="title">
+							{props.title}
+						</span>
+
 					</span>
 					:
-					<span>
+
+					<span className="title">
 						{props.title}
 					</span>
+
 			}
 			<button className="navbar-toggler" type="button" data-toggle="collapse" data-target="#navbarNav" aria-controls="navbarNav" aria-expanded="false" aria-label="Toggle navigation">
 				<span className="navbar-toggler-icon"></span>
@@ -34,6 +39,7 @@ const Navbar = (props) => {
 						''
 				}
 				{
+
 					props.position === 'right' ?
 						<span className="ml-auto">
 							{props.children}

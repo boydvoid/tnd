@@ -26,9 +26,8 @@
 	width: 100%;
 	justify-content: center;
 	align-items: center;
-	padding: 50px;
 	flex-direction: column;
-	max-width: 80em;
+	max-width: 65em;
 	background-color: #ffffff;
 }
 
@@ -52,7 +51,13 @@
 	flex-direction: column;
 }
 
-
+.ck.ck-editor__editable_inline {
+	overflow: auto;
+	padding: 0 var(--ck-spacing-standard);
+	max-width: 65em;
+	min-width: 65em;
+	border: 1px solid transparent;
+}
 
 .DraftEditor-root {
 	padding: 10px;
@@ -95,7 +100,6 @@
 
 .toolbar button {
 	background: none;
-	color: #000000;
 	padding: 0;
 }
 

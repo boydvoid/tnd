@@ -109,6 +109,7 @@ const NewBlog = (props) => {
 
 	return (
 		<div className="container-fluid new-blog">
+
 			<Navbar className="admin-nav" position="right" title="Admin">
 				<PBtn link="/admin" external={false}>Blogs</PBtn>
 				<PBtn onClick={props.logout}>Logout</PBtn>

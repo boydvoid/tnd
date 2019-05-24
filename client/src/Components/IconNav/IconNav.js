@@ -13,10 +13,10 @@ const IconNav = (props) => (
 		<span className="ml-auto icon-nav-right">
 			<ul>
 				<li><Link to="/reading" className="icon-link-tags"><img src={BookIcon} className="icons" alt=""/>Reading</Link></li>
-				<li><Link to="/writing&grammar" className="icon-link-tags"><img src={Pencil} className="icons" alt=""/>Writing & Grammar</Link></li>
+				<li><Link to="/writing-grammar" className="icon-link-tags"><img src={Pencil} className="icons" alt=""/>Writing & Grammar</Link></li>
 				<li><Link to="/math" className="icon-link-tags"><img src={Calc} className="icons" alt=""/>Math</Link></li>
 				<li><Link to="/holidays" className="icon-link-tags"><img src={Mug} className="icons" alt=""/>Holidays</Link></li>
-				<li><Link to="/classromideas" className="icon-link-tags"><img src={Light} className="icons" alt=""/>Classroom Ideas</Link></li>
+				<li><Link to="/classroom-ideas" className="icon-link-tags"><img src={Light} className="icons" alt=""/>Classroom Ideas</Link></li>
 			</ul>	
 		</span>
 	</div>

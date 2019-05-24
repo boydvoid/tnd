@@ -8,13 +8,13 @@ import { Link } from 'react-router-dom'
 import './Blogs.css'
 const Blogs = (props) => {
 	const [blogs, setBlogs] = useState([])
-	const [category, setCategory] = useState(props.category)
+	const [category, setCategory] = useState(undefined)
 	useEffect(() => {
 		setCategory(props.category)
 		api.loadBlogs().then(blogs => {
 			setBlogs(blogs.data)
 		})
-	}, [category])
+	}, [props.category])
 
 	return (
 		<div className="blogs">

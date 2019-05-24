@@ -1,6 +1,6 @@
 import React, { useState, useEffect } from 'react';
 import './App.css';
-import {BrowserRouter, Route, Switch, Redirect} from 'react-router-dom'
+import { BrowserRouter, Route, Switch, Redirect } from 'react-router-dom'
 import Home from './Pages/Home'
 import Admin from './Pages/Admin/Admin';
 import Login from './Pages/Admin/Login'
@@ -20,7 +20,7 @@ const App = () => {
   useEffect(() => {
     checkLogin()
   }, [])
-  
+
 
   const checkLogin = () => {
     api.checkLogin().then(user => {
@@ -43,31 +43,31 @@ const App = () => {
     });
   }
 
-    return (
-      <BrowserRouter>
-        <div className="App">
-          <Switch>
-            <Route path="/" exact component={Home} />
-            <Route path="/my-blog" exact component={Blogs} />
-            <Route path="/reading" exact component={Blogs} />
-            <Route path="/writing-grammar" exact component={Blogs} />
-            <Route path="/math" exact component={Blogs} />
-            <Route path="/holidays" exact component={Blogs} />
-            <Route path="/classroom-ideas" exact component={Blogs} />
-            <Route path="/contact-me" exact component={Contact} />
-            <Route path="/meet-jenn" exact component={Meet} />
-            <Route path="/blog/:id" exact component={BlogPage} />
-            <Route exact path="/admin" render={() =>
-                  loggedIn === true ? <Admin logout={logout} username={username}/> : <Login />
-                }
-              />
-            <Route exact path="/admin/blog/:id" render={() =>
-                  loggedIn === true ? <NewBlog logout={logout} username={username}/> : <Login /> 
-                }
-              />
-          </Switch>
-        </div>
-      </BrowserRouter>
-    )
-  }
+  return (
+    <BrowserRouter>
+      <div className="App">
+        <Switch>
+          <Route path="/" exact component={Home} />
+          <Route path="/my-blog" exact render={() => <Blogs category={undefined} />} />
+          <Route path="/reading" exact render={() => <Blogs category="reading" />} />
+          <Route path="/writing-grammar" exact render={() => <Blogs category="writing" />} />
+          <Route path="/math" exact render={() => <Blogs category="math" />} />
+          <Route path="/holidays" exact render={() => <Blogs category="holidays" />} />
+          <Route path="/classroom-ideas" exact render={() => <Blogs category="ideas" />} />
+          <Route path="/contact-me" exact component={Contact} />
+          <Route path="/meet-jenn" exact component={Meet} />
+          <Route path="/blog/:id" exact component={BlogPage} />
+          <Route exact path="/admin" render={() =>
+            loggedIn === true ? <Admin logout={logout} username={username} /> : <Login />
+          }
+          />
+          <Route exact path="/admin/blog/:id" render={() =>
+            loggedIn === true ? <NewBlog logout={logout} username={username} /> : <Login />
+          }
+          />
+        </Switch>
+      </div>
+    </BrowserRouter>
+  )
+}
 export default App;

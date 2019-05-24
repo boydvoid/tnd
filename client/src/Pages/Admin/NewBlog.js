@@ -18,6 +18,7 @@ const NewBlog = (props) => {
 	const [imageurl, setImageurl] = useState('')
 	const [live, setLive] = useState(false)
 	const [checked, setChecked] = useState(false)
+	const [category, setCategory] = useState([])
 
 	useEffect(() => {
 		let url = window.location.href.split('/');
@@ -29,7 +30,7 @@ const NewBlog = (props) => {
 			setTitleInputVal(blog.data.title)
 			setImageurl(blog.data.img)
 			setLive(blog.data.live)
-
+			setCategory(blog.data.category)
 			setEditorState(blog.data.blog)
 			if (blog.data.live === true) {
 				setChecked(true)
@@ -67,6 +68,7 @@ const NewBlog = (props) => {
 			title: titleInputVal,
 			id: id,
 			img: imageurl,
+			category: category,
 			live: change
 		}
 		api.saveBlog(data).then(res => {
@@ -89,6 +91,7 @@ const NewBlog = (props) => {
 			title: titleInputVal,
 			id: id,
 			img: imageurl,
+			category: category,
 			live: live
 		}
 		api.saveBlog(data).then(res => {
@@ -103,6 +106,10 @@ const NewBlog = (props) => {
 
 		if (event.target.name === 'imageurl') {
 			setImageurl(event.target.value)
+		}
+
+		if (event.target.name === 'category') {
+			setCategory(event.target.value)
 		}
 	}
 
@@ -131,6 +138,7 @@ const NewBlog = (props) => {
 								<PBtn onClick={save}>Save</PBtn>
 								<PBtn onClick={toggleLive}>Preview</PBtn>
 								<Input placeholder="Image URL" className="img-input" value={imageurl} name="imageurl" onChange={handleChange} />
+								<Input placeholder="Categories" className="img-input" value={category} name="category" onChange={handleChange} />
 							</div>
 
 							<div class="title">

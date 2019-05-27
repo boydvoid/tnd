@@ -1,0 +1,9 @@
+.slider{
+	display: flex;
+	justify-content: space-evenly;
+	width: 110vw;
+}
+
+.slider-item{
+	margin: 10px;
+}

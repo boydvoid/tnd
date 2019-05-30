@@ -1,9 +1,13 @@
-.slider{
+.slider {
 	display: flex;
 	justify-content: space-evenly;
 	width: 110vw;
 }
 
-.slider-item{
+.slider-item {
 	margin: 10px;
+}
+
+.grey {
+	background-color: rgb(231, 231, 231);
 }

@@ -13,6 +13,7 @@ const bcrypt = require('bcrypt');
 //routes imports
 const User = require('./routes/userRoutes');
 const Blogs = require('./Routes/blogRoutes')
+const Slider = require('./Routes/sliderRoutes')
 
 app.use(express.urlencoded({ extended: true }))
 app.use(express.json())
@@ -51,6 +52,7 @@ app.use(passport.session());
 //route definitions
 app.use('/api', User)
 app.use('/api', Blogs)
+app.use('/api', Slider)
 app.get('*', (req, res) => {
   res.sendFile(path.join(__dirname, './client/build/index.html'));
 });

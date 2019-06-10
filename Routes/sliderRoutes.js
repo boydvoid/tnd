@@ -7,4 +7,6 @@ router
 
 router
   .route('/slider/retrieveLinks')
-  .post(sliderController.retrieveLinks)
+  .get(sliderController.retrieveLinks)
+  
+  module.exports = router;

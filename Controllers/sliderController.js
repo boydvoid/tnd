@@ -12,7 +12,7 @@ module.exports = {
       res.send(done)
     })
   },
-  retrievelinks: (req, res) => {
+  retrieveLinks: (req, res) => {
     db.slider.find({
     }).then(done => {
       res.send(done)

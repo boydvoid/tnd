@@ -31,7 +31,7 @@ export default {
     return axios.post(`/api/blog/views`, data)
   },
   addLink: data => {
-    return axios.post('/api/slider/addLink')
+    return axios.post('/api/slider/addLink', data)
   },
   retrieveLinks: () => {
     return axios.get('/api/slider/retrieveLinks')

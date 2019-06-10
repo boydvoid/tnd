@@ -6,6 +6,7 @@ import IconNav from '../Components/IconNav/IconNav';
 import api from '../utils/api';
 import { Link } from 'react-router-dom'
 import './Blogs.css'
+import ConvertKit from '../Components/ConvertKit/ConvertKit';
 const Blogs = (props) => {
 	const [blogs, setBlogs] = useState([])
 	const [category, setCategory] = useState(undefined)
@@ -34,7 +35,7 @@ const Blogs = (props) => {
 				</ul>
 			</Navbar>
 			<IconNav />
-
+			<ConvertKit />
 			<div className="container-fluid">
 				<div className="row">
 					{

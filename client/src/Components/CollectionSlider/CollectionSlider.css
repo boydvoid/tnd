@@ -1,19 +1,8 @@
-.slider {
-	display: flex;
-	justify-content: space-evenly;
-	width: 110vw;
-}
-
 .slider-item {
-
 	display: flex !important;
-
 	justify-content: center;
-
 	align-content: center;
-
 	align-items: center;
-
 	flex-direction: column;
 	margin: 10px;
 }

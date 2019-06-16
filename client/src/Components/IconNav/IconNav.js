@@ -1,6 +1,6 @@
 import React from 'react';
 import {Link} from 'react-router-dom'
-import Logo from '../../assets/logo.PNG'
+import Logo from '../../assets/logo.png'
 import BookIcon from '../../assets/BookIcon.png'
 import Calc from '../../assets/calc.png'
 import Light from '../../assets/light.png'

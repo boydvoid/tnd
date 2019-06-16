@@ -2,7 +2,7 @@ import React from 'react';
 import './BlogSlider.css'
 import {Link} from 'react-router-dom'
 const BlogSlider = (props) => (
-	<div className="container-fluid">
+	<div className="container">
 		<div className="row">
 		{
 			props.blogs.map((blog, index) => {

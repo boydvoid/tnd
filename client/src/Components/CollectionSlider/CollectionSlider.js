@@ -20,7 +20,7 @@ const CollectionSlider = (props) => {
 		autoplay: true
 	};
 	return (
-		<div className="container-fluid grey">
+		<div className="container-fluid grey border-bottom">
 				<Slider {...settings}>
 				{
 					items.map((item, index) => {

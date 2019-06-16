@@ -3,7 +3,7 @@ import Input from '../Input/Input';
 import './ConvertKit.css'
 import PBtn from '../PBtn/PBtn'
 const ConvertKit = (props) => (
-	<div className="container-fluid convert-kit-div">
+	<div className="container-fluid convert-kit-div border-bottom">
 		<h2>{props.title}</h2>
 		<p>By entering your information, you agree to receive email from me. Per my privacy policy, you may unsubscribe at any time.</p>
 		<form action="post" action="">

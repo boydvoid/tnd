@@ -7,8 +7,12 @@
 }
 
 .icon-nav .logo {
-	transform: scale(1.5);
 	margin-left: 50px;
+	width: 600px;
+	height: 200px;
+	position: relative;
+	top: -36px;
+
 }
 
 .icon-nav ul {

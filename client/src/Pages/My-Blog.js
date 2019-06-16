@@ -36,30 +36,25 @@ const Blogs = (props) => {
 			</Navbar>
 			<IconNav />
 			<ConvertKit />
-			<div className="container">
+			<div className="container-fluid">
 				<div className="row">
 					{
 						blogs.map((blog, index) => {
 							if (blog.live) {
 								if (category !== undefined) {
 									let bCategory = blog.category.toLowerCase().split(',')
-									if (bCategory.includes(category)) {
 										console.log(bCategory)
 										return (
-											<div className="col-xl-4" key={index}>
+											<div className="col-xl-3" key={index}>
 												<img className="slider-img" src={blog.img} alt="" />
 												<p><Link to={`/blog/${blog._id}`}>{blog.title}</Link></p>
 											</div>
 										)
 
-									}
 								} else {
 
 									return (
-										<div className="col-xl-4" key={index}>
-												<img className="slider-img" src={blog.img} alt="" />
-												<p><Link to={`/blog/${blog._id}`}>{blog.title}</Link></p>
-											</div>
+										""
 									)
 								}
 

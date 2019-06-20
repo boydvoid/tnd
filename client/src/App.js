@@ -54,6 +54,7 @@ const App = () => {
           <Route path="/math" exact render={() => <Blogs category="math" />} />
           <Route path="/holidays" exact render={() => <Blogs category="holidays" />} />
           <Route path="/classroom-ideas" exact render={() => <Blogs category="ideas" />} />
+          <Route path="/teacher-freebies" exact component={Freebies} />
           <Route path="/contact-me" exact component={Contact} />
           <Route path="/meet-jenn" exact component={Meet} />
           <Route path="/blog/:id" exact component={BlogPage} />

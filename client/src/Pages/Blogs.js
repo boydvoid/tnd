@@ -7,6 +7,7 @@ import api from '../utils/api';
 import { Link } from 'react-router-dom'
 import './Blogs.css'
 import ConvertKit from '../Components/ConvertKit/ConvertKit';
+import InfiniteScroll from 'react-infinite-scroller'
 const Blogs = (props) => {
 	const [blogs, setBlogs] = useState([])
 	const [category, setCategory] = useState(undefined)
@@ -56,6 +57,7 @@ const Blogs = (props) => {
 								} else {
 
 									return (
+										
 										<div className="col-xl-4" key={index}>
 												<img className="slider-img" src={blog.img} alt="" />
 												<p><Link to={`/blog/${blog._id}`}>{blog.title}</Link></p>

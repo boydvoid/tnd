@@ -45,6 +45,7 @@ module.exports = {
         username: req.body.username,
         email: req.body.email,
         password: hash,
+        admin: req.body.admin
       })
         .then((created) => {
           console.log('created a user');

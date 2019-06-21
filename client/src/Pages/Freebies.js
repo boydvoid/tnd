@@ -6,6 +6,10 @@ import IconNav from '../Components/IconNav/IconNav';
 const Freebies = (props) => {
 
 
+	useEffect(() =>{
+		//api call
+	}, [])
+
 	return(
 		<div className="freebies">
 			<Navbar position="right">
@@ -24,6 +28,29 @@ const Freebies = (props) => {
 				</ul>
 			</Navbar>
 			<IconNav/>
+
+			<div className="container">
+				<div className="row">
+					
+				{
+					props.loggedIn ?
+					<div className="col-xl-12">
+						<div>Logged in</div>	
+					</div>
+					: 
+					
+					<div className="col-xl-12">
+						<form>
+							<Input type="text" />
+							<Input type="password" />
+							<PBtn type="submit" >Get Freebies</PBtn>
+						</form>
+					</div>
+				}
+
+
+				</div>
+			</div>
 		</div>
 	)
 	

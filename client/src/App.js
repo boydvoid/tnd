@@ -14,6 +14,7 @@ import api from "./utils/api";
 
 const App = () => {
   const [loggedIn, setLoggedIn] = useState(false)
+  const [admin, setAdmin] = useState(false)
   const [username, setUsername] = useState('')
   const [email, setEmail] = useState('')
 
@@ -29,6 +30,12 @@ const App = () => {
           setLoggedIn(true)
           setUsername(data.data.username)
           setEmail(data.data.email)
+          console.log(data.data.admin);
+          if(data.data.admin === true) {
+            setAdmin(true)
+          } else {
+            setAdmin(false)
+          }
         });
       } else {
         setLoggedIn(false)
@@ -54,16 +61,17 @@ const App = () => {
           <Route path="/math" exact render={() => <Blogs category="math" />} />
           <Route path="/holidays" exact render={() => <Blogs category="holidays" />} />
           <Route path="/classroom-ideas" exact render={() => <Blogs category="ideas" />} />
-          <Route path="/teacher-freebies" exact component={Freebies} />
+          {/* sending loggedIn to freebies, because its both the login page and content */}
+          <Route path="/teacher-freebies" exact render={() => <Freebies loggedIn={loggedIn}/>}/>
           <Route path="/contact-me" exact component={Contact} />
           <Route path="/meet-jenn" exact component={Meet} />
           <Route path="/blog/:id" exact component={BlogPage} />
           <Route exact path="/admin" render={() =>
-            loggedIn === true ? <Admin logout={logout} username={username} /> : <Login />
+            loggedIn === true && admin === true? <Admin logout={logout} username={username} /> : <Login />
           }
           />
           <Route exact path="/admin/blog/:id" render={() =>
-            loggedIn === true ? <NewBlog logout={logout} username={username} /> : <Login />
+            loggedIn === true && admin === true ? <NewBlog logout={logout} username={username} /> : <Login />
           }
           />
         </Switch>

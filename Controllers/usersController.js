@@ -5,17 +5,18 @@ const db = require('../Models')
 
 module.exports = {
   checkLogin: (req, res) => {
-    console.log(`Check Login: 👍` );
     if (req.isAuthenticated()) {
+      console.log(`User Controller Check Login: 👍` );
       // send user id to client
       res.send(req.user);
     } else {
-      console.log(`Check Login: 👎` );
+      console.log(`User Controller Check Login: 👎` );
       res.send(false);
     }
   },
   
   findById(req, res) {
+    console.log(`User Controller: 🔑 ${req.params.id}`);
     db.users.findOne({
       _id: req.params.id,
     }).then((userInfo) => {

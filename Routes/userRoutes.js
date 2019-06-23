@@ -7,10 +7,28 @@ router
   .get(usersController.checkLogin);
 
 // login
-router.post('/login', passport.authenticate('local', {
-  successRedirect: '/admin',
-  failureRedirect: '/login'
-}));
+// router.post('/login', passport.authenticate('local', {
+//   successRedirect: '/admin',
+//   failureRedirect: '/login'
+// }));
+
+router.post('/login', function(req, res, next) {
+  passport.authenticate('local', function(err, user, info) {
+    if (err) { return next(err); }
+    // Redirect if it fails
+    if (!user) { return res.redirect('/login'); }
+    req.logIn(user._id, function(err) {
+      if (err) { return next(err); }
+      // Redirect if it succeeds
+      console.log(user);
+      if(user.username === 'admin'){
+        return res.redirect('/admin');
+      } else {
+        return res.redirect('/teacher-freebies');
+      }
+    });
+  })(req, res, next);
+});
 
 router
   .route('/users/find/:id')

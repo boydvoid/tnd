@@ -24,8 +24,10 @@ const App = () => {
 
   const checkLogin = () => {
     api.checkLogin().then(user => {
+      console.log(user);
       if (user.data !== false) {
-        api.findUserById(user.data).then(data => {
+        //need to make id here?
+        api.findUserById(user.data._id).then(data => {
           setLoggedIn(true)
           setUsername(data.data.username)
           setEmail(data.data.email)
@@ -61,7 +63,7 @@ const App = () => {
           <Route path="/holidays" exact render={() => <Blogs category="holidays" />} />
           <Route path="/classroom-ideas" exact render={() => <Blogs category="ideas" />} />
           {/* sending loggedIn to freebies, because its both the login page and content */}
-          <Route path="/teacher-freebies" exact render={() => <Freebies loggedIn={loggedIn}/>}/>
+          <Route path="/teacher-freebies" exact render={() => <Freebies loggedIn={loggedIn} logout={logout}/>}/>
           <Route path="/contact-me" exact component={Contact} />
           <Route path="/meet-jenn" exact component={Meet} />
           <Route path="/blog/:id" exact component={BlogPage} />

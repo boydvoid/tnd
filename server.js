@@ -73,7 +73,7 @@ passport.use(new LocalStrategy(
 
       // User was found in the database.
       if (passwordCheck === true) {
-        return done(null, user.id);
+        return done(null, user);
       }
 
       return done(null, false);

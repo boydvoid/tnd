@@ -3,6 +3,9 @@ import axios from "axios";
 // The getRecipes method retrieves recipes from the server
 // It accepts a "query" or term to search the recipe api for
 export default {
+  login:  data => {
+    return axios.post(`/api/login`, data);
+  },
   checkLogin() {
     return axios.get(`/api/checkLogin`);
   },

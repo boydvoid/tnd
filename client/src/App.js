@@ -22,7 +22,6 @@ const App = () => {
     checkLogin()
   }, [])
 
-
   const checkLogin = () => {
     api.checkLogin().then(user => {
       if (user.data !== false) {

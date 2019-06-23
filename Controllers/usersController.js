@@ -4,13 +4,13 @@ const bcrypt = require('bcrypt')
 const db = require('../Models')
 
 module.exports = {
-	checkLogin: (req, res) => {
-    console.log(req.isAuthenticated());
+  checkLogin: (req, res) => {
+    console.log(`Check Login: 👍` );
     if (req.isAuthenticated()) {
-      console.log(req.user);
       // send user id to client
       res.send(req.user);
     } else {
+      console.log(`Check Login: 👎` );
       res.send(false);
     }
   },
@@ -50,7 +50,7 @@ module.exports = {
         .then((created) => {
           console.log('created a user');
           req.login(created._id, (err) => {
-            console.log('logged in a user');
+            console.log(`Create User: ✔`);
             res.send(true);
           });
         })

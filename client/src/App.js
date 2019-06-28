@@ -27,7 +27,8 @@ const App = () => {
       console.log(user);
       if (user.data !== false) {
         //need to make id here?
-        api.findUserById(user.data._id).then(data => {
+        console.log(user.data);
+        api.findUserById(user.data).then(data => {
           setLoggedIn(true)
           setUsername(data.data.username)
           setEmail(data.data.email)

@@ -38,5 +38,8 @@ export default {
   },
   retrieveLinks: () => {
     return axios.get('/api/slider/retrieveLinks')
+  },
+  submitSubscriber: (data) => {
+    return axios.post('https://api.convertkit.com/v3/forms/988284/subscribe?api_key=TYgg8lXToCzj3_E7q4JnLw', data)
   }
 };

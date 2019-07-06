@@ -1,0 +1,12 @@
+.freebie-login {
+  background-color: #E8E8E8;
+  display: flex;
+  flex-direction: row;
+  justify-content: center;
+  align-content: center;
+  align-items: center;
+}
+
+.freebie-login p {
+  margin: 0;
+}

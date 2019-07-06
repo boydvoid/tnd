@@ -11,6 +11,7 @@ import Freebies from './Pages/Freebies';
 import Contact from './Pages/Contact';
 import Meet from './Pages/Meet';
 import api from "./utils/api";
+import FreebiesReg from './Pages/FreebiesRegister';
 
 const App = () => {
   const [loggedIn, setLoggedIn] = useState(false)
@@ -64,7 +65,8 @@ const App = () => {
           <Route path="/holidays" exact render={() => <Blogs category="holidays" />} />
           <Route path="/classroom-ideas" exact render={() => <Blogs category="ideas" />} />
           {/* sending loggedIn to freebies, because its both the login page and content */}
-          <Route path="/teacher-freebies" exact render={() => <Freebies loggedIn={loggedIn} logout={logout}/>}/>
+          <Route path="/teacher-freebies" exact render={() => <FreebiesReg loggedIn={loggedIn} logout={logout} />}/>
+          <Route path="/my-freebies" exact render={() => <Freebies loggedIn={loggedIn} logout={logout}/>}/>
           <Route path="/contact-me" exact component={Contact} />
           <Route path="/meet-jenn" exact component={Meet} />
           <Route path="/blog/:id" exact component={BlogPage} />

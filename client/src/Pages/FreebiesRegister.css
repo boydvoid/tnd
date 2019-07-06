@@ -1,0 +1,18 @@
+.wrapper-freebies {
+  text-align: center;
+}
+
+.freebies-title {
+  width: 100%;
+  text-align: center;
+  display: flex;
+  justify-content: center;
+  padding: 80px;
+}
+
+.freebies-title h2 {
+  font-size: 50px;
+  font-family: 'Rubik', sans-serif;
+  max-width: 1184px;
+  width: 100%;
+}

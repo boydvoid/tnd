@@ -4,14 +4,25 @@
 	text-align: center;
 }
 
+.convert-kit-div p {
+	margin: 20px;
+}
+
 .convert-kit-div input {
 	margin: 20px;
 	padding: 10px;
+	width: 100%;
 }
 
 .convert-kit-div select {
-	width: 200px;
+	width: 100%;
 	padding: 10px;
 	border: none;
 	margin: 20px;
+}
+
+#convert-form {
+	display: flex;
+	flex-direction: row;
+	justify-content: space-between;
 }

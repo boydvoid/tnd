@@ -1,0 +1,28 @@
+.profile-img {
+  width: 300px;
+  margin: 30px;
+}
+
+.about {
+  display: flex;
+  flex-direction: column;
+  justify-content: space-evenly;
+  padding: 20px;
+  align-items: center;
+  align-content: center;
+}
+
+.about ul {
+  list-style-type: none;
+  width: 100%;
+  text-align: center;
+  display: flex;
+  justify-content: center;
+}
+
+.about ul li a {
+  float: left;
+  margin: 10px;
+  font-size: 25px;
+  color: #695395;
+}

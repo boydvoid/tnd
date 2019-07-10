@@ -1,0 +1,59 @@
+.navbar {
+  font-size: 13px;
+  font-family: 'Montserrat', sans-serif;
+  height: 50px;
+  background: #695395;
+}
+
+.navbar ul {
+  list-style-type: none;
+}
+
+.navbar ul li {
+  float: left;
+  padding: 0 10px;
+}
+
+.navbar a {
+  color: #ffffff;
+}
+
+.navbar .searchBar {
+  background-color: #695395;
+  color: #ffffff;
+  width: 100%;
+  left: 0;
+  position: relative;
+}
+
+.navbar .searchBar:focus {
+  transform: scale(1.2);
+}
+
+.navbar .searchBar::placeholder {
+  color: #ffffff;
+  font-family: 'Montserrat', sans-serif;
+}
+
+.navbar button {
+  background: none;
+  color: #ffffff;
+  font-weight: 700;
+  padding: 0;
+}
+
+.navbar a {
+  background: none;
+  color: #ffffff;
+  font-weight: 700;
+  padding: 0;
+}
+
+.admin-nav {
+  border-bottom: 1px solid #c6c6c6;
+}
+
+.navbar .title {
+  font-weight: 700;
+  color: #ffffff;
+}

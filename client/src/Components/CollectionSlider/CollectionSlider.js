@@ -14,13 +14,15 @@ const CollectionSlider = (props) => {
 	])
 	var settings = {
 		infinite: true,
-		speed: 800,
+		speed: 500,
 		slidesToShow: 4,
-		slidesToScroll: 1,
+		slidesToScroll: 4,
 		autoplay: true
 	};
 	return (
 		<div className="container-fluid grey border-bottom">
+			<div className="container">
+
 				<Slider {...settings}>
 				{
 					items.map((item, index) => {
@@ -33,6 +35,8 @@ const CollectionSlider = (props) => {
 					})
 				}
 				</Slider> 
+			
+				</div>
 		</div>
 	)
 }

@@ -58,56 +58,69 @@ const ConvertKit = (props) => {
 			return(
 
 				<div className="container-fluid convert-kit-div border-bottom">
-			<h2>{title}</h2>
-			<p>By entering your information, you agree to receive email from me. Per my privacy policy, you may unsubscribe at any time.</p>
-			<form onSubmit={submitForm}>
-				<Input className="convert-input" id="convert-name" type="text" placeholder="First Name" name="name"onChange={handleChange}  />
-				<Input className="convert-input" id="convert-email" type="email" placeholder="Email" name="email"onChange={handleChange}/>
-				<select name="tags"onChange={handleChange} id="convert-select">
-					<option value="grade" selected="selected">Select a Grade</option>
-					<option value="548828">Pre-k</option>
-					<option value="548830">First</option>
-					<option value="548832">Second</option>
-					<option value="548833">Third</option>
-					<option value="548834">Fourth</option>
-					<option value="548836">Fifth</option>
-					<option value="548837">Sixth</option>
-				</select>
-				<div>
-					<PBtn type="submit">Submit</PBtn>
-				</div>
-			</form>
+					<div className="container">
+						<div className="row">
+							<div className="col-xl-12">
+								<h2>{title}</h2>
+								<p>By entering your information, you agree to receive email from me. Per my privacy policy, you may unsubscribe at any time.</p>
+								<form id="convert-form" onSubmit={submitForm}>
+									<Input className="convert-input" id="convert-name" type="text" placeholder="First Name" name="name"onChange={handleChange}  />
+									<Input className="convert-input" id="convert-email" type="email" placeholder="Email" name="email"onChange={handleChange}/>
+									<select name="tags"onChange={handleChange} id="convert-select">
+										<option value="grade" selected="selected">Select a Grade</option>
+										<option value="548828">Pre-k</option>
+										<option value="548830">First</option>
+										<option value="548832">Second</option>
+										<option value="548833">Third</option>
+										<option value="548834">Fourth</option>
+										<option value="548836">Fifth</option>
+										<option value="548837">Sixth</option>
+									</select>
+									<div>
+										<PBtn type="submit" className="secondary-button">Submit</PBtn>
+									</div>
+								</form>
+							</div>
+						</div>
+					</div>
 		</div>	
 		)
 		}	else {
 			return(
 				
 				<div className="container-fluid convert-kit-div border-bottom">
-		<h2>{title}</h2>
-		<p>By entering your information, you agree to receive email from me. Per my privacy policy, you may unsubscribe at any time.</p>
-		<form onSubmit={submitForm}>
-				<Input className="convert-input" id="convert-name" type="text" placeholder="First Name" name="name"onChange={handleChange}  />
-				<Input className="convert-input" id="convert-email" type="email" placeholder="Email" name="email"onChange={handleChange}/>
-				<select name="tags"onChange={handleChange} id="convert-select">
-				<option value="grade" selected="selected">Select a Grade</option>
-				<option value="548828">Pre-k</option>
-				<option value="548830">First</option>
-				<option value="548832">Second</option>
-				<option value="548833">Third</option>
-				<option value="548834">Fourth</option>
-				<option value="548836">Fifth</option>
-				<option value="548837">Sixth</option>
-			</select>
-			<div>
-				<PBtn type="submit"><Loader 
-         type="Puff"
-         color="#FFFFFF"
-         height="25"	
-         width="25"
-      />   </PBtn>
-			</div>
-		</form>
-	</div>
+					<div className="container">
+						<div className="row">
+							<div className="col-xl-12">
+
+								<h2>{title}</h2>
+								<p>By entering your information, you agree to receive email from me. Per my privacy policy, you may unsubscribe at any time.</p>
+								<form onSubmit={submitForm}>
+									<Input className="convert-input" id="convert-name" type="text" placeholder="First Name" name="name"onChange={handleChange}  />
+									<Input className="convert-input" id="convert-email" type="email" placeholder="Email" name="email"onChange={handleChange}/>
+									<select name="tags"onChange={handleChange} id="convert-select">
+										<option value="grade" selected="selected">Select a Grade</option>
+										<option value="548828">Pre-k</option>
+										<option value="548830">First</option>
+										<option value="548832">Second</option>
+										<option value="548833">Third</option>
+										<option value="548834">Fourth</option>
+										<option value="548836">Fifth</option>
+										<option value="548837">Sixth</option>
+									</select>
+								<div>
+									<PBtn type="submit" className="secondary-button"><Loader 
+									type="Puff"
+									color="#FFFFFF"
+									height="25"	
+									width="25"
+									/>   </PBtn>
+								</div>
+								</form>
+							</div>
+						</div>
+					</div>
+				</div>
 		
 		)
 	}

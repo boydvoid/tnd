@@ -8,6 +8,7 @@ import BlogSlider from '../Components/BlogSlider/BlogSlider'
 import api from '../utils/api';
 import './Home.css'
 import Navbar from '../Components/Navbar/Navbar';
+import Footer from '../Components/Footer/Footer';
 import PBtn from '../Components/PBtn/PBtn'
 import Input from '../Components/Input/Input'
 import SocialClips from '../Components/SocialClips/SocialClips';

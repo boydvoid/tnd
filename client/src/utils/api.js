@@ -3,7 +3,7 @@ import axios from "axios";
 // The getRecipes method retrieves recipes from the server
 // It accepts a "query" or term to search the recipe api for
 export default {
-  login:  data => {
+  login: data => {
     return axios.post(`/api/login`, data);
   },
   checkLogin() {
@@ -19,27 +19,33 @@ export default {
     return axios.get(`/api/users/find/${id}`);
   },
   saveBlog: data => {
-    return axios.post(`/api/blog/save`, data)
+    return axios.post(`/api/blog/save`, data);
   },
   loadBlogs: () => {
-    return axios.get(`/api/blog/loadall`)
+    return axios.get(`/api/blog/loadall`);
   },
   loadBlog: data => {
-    return axios.get(`/api/blog/load/${data}`)
+    return axios.get(`/api/blog/load/${data}`);
   },
   newBlog: data => {
-    return axios.post(`/api/blog/new`, data)
+    return axios.post(`/api/blog/new`, data);
+  },
+  search: search => {
+    return axios.get(`/api/blog/${search}`);
   },
   updateViews: data => {
-    return axios.post(`/api/blog/views`, data)
+    return axios.post(`/api/blog/views`, data);
   },
   addLink: data => {
-    return axios.post('/api/slider/addLink', data)
+    return axios.post("/api/slider/addLink", data);
   },
   retrieveLinks: () => {
-    return axios.get('/api/slider/retrieveLinks')
+    return axios.get("/api/slider/retrieveLinks");
   },
-  submitSubscriber: (data) => {
-    return axios.post('https://api.convertkit.com/v3/forms/988284/subscribe?api_key=TYgg8lXToCzj3_E7q4JnLw', data)
+  submitSubscriber: data => {
+    return axios.post(
+      "https://api.convertkit.com/v3/forms/988284/subscribe?api_key=TYgg8lXToCzj3_E7q4JnLw",
+      data
+    );
   }
 };

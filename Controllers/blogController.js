@@ -57,5 +57,15 @@ module.exports = {
     }).then(done => {
       res.send(done)
     })
-  }
+ },
+ search: (req, res) => {
+   const regex = new RegExp(escapeRegex(req.params.search), 'gi')
+   db.blogs.find({title: regex}, (blog) => {
+     res.send(blog)
+   })
+ }
+
 }
+function escapeRegex(text) {
+  return text.replace(/[-[\]{}()*+?.,\\^$|#\s]/g, "\\$&");
+};

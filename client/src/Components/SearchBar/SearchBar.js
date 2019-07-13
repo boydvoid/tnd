@@ -18,14 +18,15 @@ const SearchBar = props => {
     setBox(e.target.value);
   };
   return (
-    <form onSubmit={blogSearch}>
+    <form action="/my-blog">
       <Input
         className="searchBar"
         type="text"
         placeholder="Search..."
+        name="q"
         onChange={handleChange}
       />
-      <PBtn>Search</PBtn>
+      <PBtn type="submit">Search</PBtn>
     </form>
   );
 };

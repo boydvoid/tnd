@@ -31,7 +31,7 @@ export default {
     return axios.post(`/api/blog/new`, data);
   },
   search: search => {
-    return axios.get(`/api/blog/${search}`);
+    return axios.get(`/api/blog/search/${search}`);
   },
   updateViews: data => {
     return axios.post(`/api/blog/views`, data);

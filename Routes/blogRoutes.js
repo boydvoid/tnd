@@ -24,4 +24,9 @@ router
 	router
   .route('/blog/new')
   .post(blogController.new);
+
+	router
+  .route('/blog/search/:search')
+  .get(blogController.search);
+
 module.exports = router;

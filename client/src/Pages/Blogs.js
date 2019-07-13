@@ -15,6 +15,15 @@ const Blogs = props => {
   const [category, setCategory] = useState(undefined);
   useEffect(() => {
     setCategory(props.category);
+    //search here for query
+    if (window.location.href.includes("q")) {
+      //search param
+      let query = window.location.href.split("q=")[1];
+      console.log(query);
+      api.search(query).then(blogs => {
+        console.log(blogs);
+      });
+    }
     api.loadBlogs().then(blogs => {
       setBlogs(blogs.data);
     });

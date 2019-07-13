@@ -18,13 +18,6 @@
   color: #ffffff;
 }
 
-.navbar .searchBar {
-  background-color: #695395;
-  color: #ffffff;
-  width: 100%;
-  left: 0;
-  position: relative;
-}
 
 .navbar .searchBar:focus {
   transform: scale(1.2);

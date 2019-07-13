@@ -3,10 +3,15 @@
 	font-family: 'Montserrat', sans-serif;
 	height: 50px;
 	background: #695395;
+	padding-top: 20px;
 }
 
 .navbar ul {
 	list-style-type: none;
+	height: 0px;
+	display: flex;
+	justify-content: center;
+	align-items: center;
 }
 
 .navbar ul li {
@@ -21,7 +26,7 @@
 .navbar .searchBar {
 	background-color: #695395;
 	color: #ffffff;
-	width: 100%;
+	width: 60%;
 	left: 0;
 	position: relative;
 }

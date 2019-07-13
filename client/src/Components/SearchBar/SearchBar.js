@@ -6,14 +6,6 @@ import { Redirect } from "react-router-dom";
 const SearchBar = props => {
   const [searchBox, setBox] = useState("");
   //fuzzy search all blogs here
-  const blogSearch = () => {
-    api.search(searchBox).then(data => {
-      //go to page w/ results
-      console.log(data);
-      return <Redirect to="/my-blog" push={true} />;
-    });
-  };
-
   const handleChange = e => {
     setBox(e.target.value);
   };
@@ -26,7 +18,9 @@ const SearchBar = props => {
         name="q"
         onChange={handleChange}
       />
-      <PBtn type="submit">Search</PBtn>
+      <PBtn type="submit">
+        <i className="fas fa-search"></i>
+      </PBtn>
     </form>
   );
 };

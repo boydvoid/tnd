@@ -1,5 +1,4 @@
 const db = require('../Models')
-const mongoose_fuzzy_searching = require('mongoose-fuzzy-searching');
 
 module.exports = {
   checkLogin: (req, res) => {
@@ -60,18 +59,12 @@ module.exports = {
     })
   },
   search: (req, res) => {
-    const regex = new RegExp(escapeRegex(req.params.search), 'gi');
-    // let allBlogs = []
-    db.blogs.find({ $and: [{ title: { $regex: regex, $options: 'i' } }, { category: { $regex: regex, $options: 'i' } }] }).then(blogs => {
+    const query = req.params.search.replace(/\+/g, " ")
+    let allBlogs = []
+    db.blogs.find({ $or: [{ title: { $regex: query, $options: 'i' } }, { category: { $regex: query, $options: 'i' } }] }).then(blogs => {
       res.send(blogs)
     })
-    // db.blogs.fuzzySearch(query).then(blogs => {
-    //   res.send(blogs)
-    // })
+
   }
 
 }
-
-function escapeRegex(text) {
-  return text.replace(/[-[\]{}()*+?.,\\^$|#\s]/g, "\\$&");
-};

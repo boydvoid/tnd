@@ -104,18 +104,19 @@ const FreebiesReg = props => {
         <div className="row">
           <FreebieLogin register={false} />
           {/* login bar */}
-          <div className="freebies-title">
-            <h2>
-              Want to access a FREE library of rdesources for upper elementary
-              classrooms?
+          <div className="container">
+
+            <div className="freebies-title">
+              <h2>
+                Want to access a FREE library of rdesources for upper elementary
+                classrooms?
             </h2>
-          </div>
-          <div className="col-xl-12">
-            <p>
-              Enter your information on the form to join my email list! The
-              first email you'll recieve will give you the password for the Free
-              Resource Library!
+            </div>
+            <div className="col-xl-12">
+              <p>
+                Lorem ipsum dolor, sit amet consectetur adipisicing elit. Odit aperiam, rerum accusantium, eveniet quia sint eius adipisci corporis eum deserunt voluptatum molestiae hic rem nisi atque, sed sapiente labore cum. Lorem ipsum dolor sit amet consectetur, adipisicing elit. Dicta, iusto quo? Perferendis, architecto quidem corrupti hic distinctio eos molestiae aliquid! Placeat adipisci enim est dolores cum autem minima dignissimos dolorem.
             </p>
+            </div>
           </div>
           <ConvertKit title="Join my newsletter and gain access to a library of FREE resources for upper elementary grades!" />
           <AboutSection />

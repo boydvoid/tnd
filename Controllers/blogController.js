@@ -61,7 +61,7 @@ module.exports = {
   search: (req, res) => {
     const query = req.params.search.replace(/\+/g, " ")
     let allBlogs = []
-    db.blogs.find({ $or: [{ title: { $regex: query, $options: 'i' } }, { category: { $regex: query, $options: 'i' } }] }).then(blogs => {
+    db.blogs.find({ $or: [{ title: { $regex: query, $options: 'i' } }, { blog: { $regex: query, $options: 'i' }}, { category: { $regex: query, $options: 'i' } } ] }).then(blogs => {
       res.send(blogs)
     })
 

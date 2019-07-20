@@ -19,7 +19,7 @@ const IconNav = props => (
           </Link>
         </li>
         <li>
-          <Link to="/writing-grammar" className="icon-link-tags">
+          <Link to="/writing" className="icon-link-tags">
             <img src={Pencil} className="icons" alt="" />
             Writing & Grammar
           </Link>
@@ -37,7 +37,7 @@ const IconNav = props => (
           </Link>
         </li>
         <li>
-          <Link to="/classroom-ideas" className="icon-link-tags">
+          <Link to="/classroom" className="icon-link-tags">
             <img src={Light} className="icons" alt="" />
             Classroom Ideas
           </Link>

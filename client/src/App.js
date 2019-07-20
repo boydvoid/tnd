@@ -70,7 +70,7 @@ const App = () => {
             render={() => <Blogs category="reading" />}
           />
           <Route
-            path="/writing-grammar"
+            path="/writing"
             exact
             render={() => <Blogs category="writing" />}
           />
@@ -81,7 +81,7 @@ const App = () => {
             render={() => <Blogs category="holidays" />}
           />
           <Route
-            path="/classroom-ideas"
+            path="/classroom"
             exact
             render={() => <Blogs category="ideas" />}
           />

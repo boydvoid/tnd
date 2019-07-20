@@ -65,6 +65,13 @@ module.exports = {
       res.send(blogs)
     })
 
+  },
+  categorySearch: (req, res) => {
+    const query = req.params.search.replace(/\+/g, " ")
+    db.blogs.find( { category: { $regex: query, $options: 'i' } } ).then(blogs => {
+      res.send(blogs)
+    })
+
   }
 
 }

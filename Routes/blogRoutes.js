@@ -29,4 +29,7 @@ router
   .route('/blog/search/:search')
   .get(blogController.search);
 
+	router
+  .route('/blog/categorySearch/:search')
+  .get(blogController.categorySearch);
 module.exports = router;

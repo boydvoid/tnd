@@ -25,9 +25,17 @@ const Blogs = props => {
           console.log(blogs);
           setBlogs(blogs.data);
         });
+      } else {
+        console.log("loading");
+        api.loadBlogs().then(blogs => {
+          setBlogs(blogs.data);
+        });
       }
     } else {
-      api.loadBlogs().then(blogs => {
+      console.log("loading");
+      let query = window.location.href.split("/")[3];
+      console.log(query);
+      api.categorySearch(query).then(blogs => {
         setBlogs(blogs.data);
       });
     }

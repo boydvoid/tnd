@@ -33,6 +33,9 @@ export default {
   search: search => {
     return axios.get(`/api/blog/search/${search}`);
   },
+  categorySearch: search => {
+    return axios.get(`/api/blog/categorySearch/${search}`);
+  },
   updateViews: data => {
     return axios.post(`/api/blog/views`, data);
   },

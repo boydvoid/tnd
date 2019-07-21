@@ -3,6 +3,7 @@ import Navbar from "../../Components/Navbar/Navbar";
 import PBtn from "../../Components/PBtn/PBtn";
 import "./NewBlog.css";
 import {
+  Editor,
   EditorState,
   convertToRaw,
   convertFromRaw,
@@ -12,12 +13,11 @@ import draftToHtml from "draftjs-to-html";
 import Input from "../../Components/Input/Input";
 import _ from "lodash";
 import api from "../../utils/api";
-import { Editor } from "react-draft-wysiwyg";
 import CKEditor from "@ckeditor/ckeditor5-react";
 import BaloonEditor from "@ckeditor/ckeditor5-build-balloon-block";
 import ToggleSwitch from "../../Components/ToggleSwitch/ToggleSwitch";
 const NewBlog = props => {
-  const [editorState, setEditorState] = useState("<p></p>");
+  const [editorState, setEditorState] = useState(EditorState.createEmpty());
   const [editorHTML, setEditorHTML] = useState({ __html: "<div></div>" });
   const [titleInputVal, setTitleInputVal] = useState("");
   const [id, setId] = useState("");
@@ -31,6 +31,7 @@ const NewBlog = props => {
 
     setId(url[5]);
 
+    //need to convert from raw 
     api.loadBlog(url[5]).then(blog => {
       setTitleInputVal(blog.data.title);
       setImageurl(blog.data.img);
@@ -51,9 +52,9 @@ const NewBlog = props => {
 
   const onEditorStateChange = editorState => {
     setEditorState(editorState);
-    setEditorHTML({
-      __html: draftToHtml(convertToRaw(editorState.getCurrentContent()))
-    });
+    // setEditorHTML({
+    //   __html: draftToHtml(convertToRaw(editorState.getCurrentContent()))
+    // });
     //save on update
     //need to debounce to save when youre done typing
     //need to test w/ localStorage
@@ -89,7 +90,8 @@ const NewBlog = props => {
 
   const save = () => {
     console.log("run save");
-    // save to db
+    // TODO convertToRaw and save to db
+    //TODO convertFromRaw on blogPage w/ editor set to readonly
     let data = {
       username: props.username,
       blog: editorState,
@@ -179,23 +181,17 @@ const NewBlog = props => {
                       console.log({ event, editor, data });
                     }}
 									/> */}
-                  <Editor
-                    editorState={editorState}
-                    toolbarClassName="toolbarClassName"
-                    wrapperClassName="wrapperClassName"
-                    editorClassName="editorClassName"
-                    onEditorStateChange={(event, editor) => {
-                      const data = editor.getData();
-                      setEditorState(data);
-                      console.log({ event, editor, data });
-                    }}
-                  />
+                  <Editor 
+                    editorState = {editorState} 
+                    onChange={onEditorStateChange}
+                    placeholder="Start your blog here..."
+                  />                 
                 </div>
               </div>
 
-              <div className="preview">
+              {/* <div className="preview">
                 <span dangerouslySetInnerHTML={editorHTML} />
-              </div>
+              </div> */}
             </div>
           </div>
         </div>

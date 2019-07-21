@@ -35,7 +35,8 @@ if (process.env.NODE_ENV === 'production') {
 // });
 
 //testing mongo online
-mongoose.connect(process.env.MONGOLAB_ORANGE_URI || 'mongodb://admin:admin11111111@ds253537.mlab.com:53537/tnd', { useNewUrlParser: true }).then(() => {
+mongoose.connect(process.env.MONGOLAB_ORANGE_URI || 'mongodb://admin:admin11111111@ds253537.mlab.com:53537/tnd', { useNewUrlParser: true }).then((data) => {
+  console.log(data)
 });
 
 // store the session in mongo db

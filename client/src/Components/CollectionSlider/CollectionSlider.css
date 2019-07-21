@@ -1,17 +1,23 @@
 .slider-item {
-	display: flex !important;
+	/* display: flex !important;
 	justify-content: center;
 	align-content: center;
 	align-items: center;
 	flex-direction: column;
-	margin: 10px;
+	margin: 10px; */
+	transform: translate(-126px, 10px);
 }
 
 .slider-item img {
-	margin: 10px;
-	max-width: 250px;
+	max-width: 270px;
+	box-shadow: 0 3px 6px #00000075;
 }
 
 .grey {
 	background-color: rgb(231, 231, 231);
+}
+
+.slick-slider {
+	max-width: 1140px;
+	padding: 10px;
 }

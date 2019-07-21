@@ -1,15 +1,5 @@
 .profile-img {
-  width: 300px;
-  margin: 30px;
-}
-
-.about {
-  display: flex;
-  flex-direction: column;
-  justify-content: space-evenly;
-  padding: 20px;
-  align-items: center;
-  align-content: center;
+  width: 270px;
 }
 
 .about ul {

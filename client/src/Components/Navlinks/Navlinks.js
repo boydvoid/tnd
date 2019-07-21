@@ -6,73 +6,63 @@ import SearchBar from "../SearchBar/SearchBar";
 const Navlinks = props => (
   <ul>
     <li>
-      {" "}
       <PBtn link="/" external={false}>
         Home
-      </PBtn>{" "}
+      </PBtn>
     </li>
     <li>
-      {" "}
       <PBtn link="/my-blog" external={false}>
         Blog
-      </PBtn>{" "}
+      </PBtn>
     </li>
     <li>
-      {" "}
       <PBtn
         link="https://www.teacherspayteachers.com/Store/The-Teacher-Next-Door"
         external={true}
       >
         My Store
-      </PBtn>{" "}
+      </PBtn>
     </li>
     <li>
-      {" "}
       <PBtn link="/teacher-freebies" external={false}>
         Teacher Freebies
-      </PBtn>{" "}
+      </PBtn>
     </li>
     <li>
-      {" "}
       <PBtn link="/meet-jenn" external={false}>
         Meet Jenn
-      </PBtn>{" "}
+      </PBtn>
     </li>
     <li>
-      {" "}
       <PBtn link="/contact-me" external={false}>
         Contact Me
-      </PBtn>{" "}
+      </PBtn>
     </li>
     <li>
-      {" "}
       <PBtn link="https://www.facebook.com/TheTeacherNextDoor" external={true}>
         <i className="fab fa-facebook"></i>
-      </PBtn>{" "}
+      </PBtn>
     </li>
     <li>
-      {" "}
       <PBtn
         link="https://www.instagram.com/theteachernextdoor/"
         external={true}
       >
         <i className="fab fa-instagram"></i>
-      </PBtn>{" "}
+      </PBtn>
     </li>
     <li>
-      {" "}
       <PBtn link="https://www.pinterest.com/TeacherNextDoor/" external={true}>
         <i className="fab fa-pinterest-square"></i>
-      </PBtn>{" "}
+      </PBtn>
     </li>
     <li>
-      {" "}
       <PBtn
         link="https://www.teacherspayteachers.com/Store/The-Teacher-Next-Door"
         external={true}
       >
         TpT
-      </PBtn>{" "}
+      </PBtn>
     </li>
     <li>
       <SearchBar history={props.history} />

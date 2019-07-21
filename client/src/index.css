@@ -20,6 +20,24 @@ code {
   padding: 0;
 }
 
+/* custom grid */
+.container {
+  max-width: 1718px;
+}
+
+.row {
+  justify-content: center;
+}
+
+.row-contained {
+  width: 100%;
+  max-width: 1140px;
+  display: flex;
+  flex-wrap: wrap;
+  margin: 0 auto;
+  justify-content: center;
+}
+
 .center {
   justify-content: center;
   display: flex;
@@ -46,7 +64,25 @@ h2 {
   font-size: 36px;
 }
 
-p {
+p a {
   font-family: 'Martel Sans';
   font-size: 16px;
+}
+
+ul {
+  list-style-type: none;
+  ;
+}
+
+
+.padding-30 {
+  padding: 30px
+}
+
+.padding-top-30 {
+  padding-top: 30px;
+}
+
+.padding-10 {
+  padding: 10px
 }

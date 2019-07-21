@@ -8,7 +8,7 @@ import Mug from "../../assets/mug.png";
 import Pencil from "../../assets/pencil.png";
 import "./IconNav.css";
 const IconNav = props => (
-  <div className="icon-nav">
+  <div className="container icon-nav">
     <img src={Logo} alt="" className="logo" />
     <span className="ml-auto icon-nav-right">
       <ul>

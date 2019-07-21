@@ -1,16 +1,17 @@
 .primary-button {
 	background-color: #695395;
 	border: none;
-	padding: 10px 50px;
-	margin: 20px;
+	padding: 15px 50px;
+	margin-top: 20px;
 	color: #ffffff;
+	width: 100%;
 }
 
 .secondary-button {
 	background-color: #001F3F;
 	border: none;
-	padding: 10px 50px;
-	margin: 20px;
+	padding: 15px 50px;
+	margin-top: 20px;
 	color: #ffffff;
-
+	width: 100%;
 }

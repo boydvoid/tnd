@@ -2,12 +2,11 @@
 	display: flex;
 	max-height: 200px;
 	height: 100%;
-	padding: 50px;
+	padding-top: 50px;
 	border-bottom: 1px solid #C6C6C6;
 }
 
 .icon-nav .logo {
-	margin-left: 50px;
 	width: 600px;
 	height: 200px;
 	position: relative;
@@ -19,7 +18,7 @@
 	list-style-type: none;
 	width: 100%;
 	display: flex;
-	justify-content: space-evenly;
+	justify-content: flex-end;
 	;
 }
 
@@ -41,4 +40,5 @@
 	display: flex;
 	flex-direction: column;
 	align-items: center;
+	padding-left: 20px;
 }

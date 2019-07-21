@@ -14,7 +14,7 @@ const SearchBar = props => {
       <Input
         className="searchBar"
         type="text"
-        placeholder="Search..."
+        placeholder="Search"
         name="q"
         onChange={handleChange}
       />

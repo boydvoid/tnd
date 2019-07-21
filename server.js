@@ -24,16 +24,25 @@ if (process.env.NODE_ENV === 'production') {
   app.use(express.static('client/build'));
 }
 
-// mongo
-mongoose.connect(process.env.MONGOLAB_ORANGE_URI || 'mongodb://localhost/tnd', { useNewUrlParser: true }).then(() => {
+// // mongo
+// mongoose.connect(process.env.MONGOLAB_ORANGE_URI || 'mongodb://localhost/tnd', { useNewUrlParser: true }).then(() => {
+// });
+
+// // store the session in mongo db
+// const store = new MongoDBStore({
+//   uri: process.env.MONGOLAB_ORANGE_URI || 'mongodb://localhost/tnd',
+//   collection: 'sessions',
+// });
+
+//testing mongo online
+mongoose.connect(process.env.MONGOLAB_ORANGE_URI || 'mongodb://admin:admin11111111@ds253537.mlab.com:53537/tnd', { useNewUrlParser: true }).then(() => {
 });
 
 // store the session in mongo db
 const store = new MongoDBStore({
-  uri: process.env.MONGOLAB_ORANGE_URI || 'mongodb://localhost/tnd',
+  uri: process.env.MONGOLAB_ORANGE_URI || 'mongodb://admin:admin11111111@ds253537.mlab.com:53537/tnd',
   collection: 'sessions',
 });
-
 store.on('error', (error) => {
   console.log(error);
 });

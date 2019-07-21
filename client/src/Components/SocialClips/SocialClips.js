@@ -23,8 +23,8 @@ const SocialClips = props => {
               height="500"
               style={{ width: "100%", border: "0", overflow: "hidden" }}
               scrolling="no"
-              frameborder="0"
-              allowTransparency="true"
+              frameBorder="0"
+              allowtransparency="true"
               allow="encrypted-media"
             ></iframe>
           </div>

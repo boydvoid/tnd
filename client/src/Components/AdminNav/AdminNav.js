@@ -1,23 +1,25 @@
-import React from 'react';
-import PBtn from '../PBtn/PBtn';
+import React from "react";
+import PBtn from "../PBtn/PBtn";
+import "./AdminNav.css";
+const AdminNav = props => (
+  <nav className={`container-fluid admin-navbar ${props.className}`}>
+    <div className="container">
+      <p className="title">{props.title}</p>
 
-const AdminNav = (props) => (
-	<nav class="navbar navbar-expand-lg navbar-light bg-light">
-  <a class="navbar-brand" href="#">Navbar</a>
-  <button class="navbar-toggler" type="button" data-toggle="collapse" data-target="#navbarNavAltMarkup" aria-controls="navbarNavAltMarkup" aria-expanded="false" aria-label="Toggle navigation">
-    <span class="navbar-toggler-icon"></span>
-  </button>
-	<span className="ml-auto">
-  <div class="collapse navbar-collapse" id="navbarNavAltMarkup">
-    <div class="navbar-nav">
-      <a class="nav-item nav-link " href="/admin">Blog</a>
-      <a class="nav-item nav-link" href="#">Media</a>
-      <a class="nav-item nav-link" href="#">Products</a>
-      <button className="link" onClick={props.logout}>Logout</button>
+      <div id="navbarNav">
+        {props.position === "left" ? (
+          <span className="mr-auto">{props.children}</span>
+        ) : (
+          ""
+        )}
+        {props.position === "right" ? (
+          <span className="ml-auto">{props.children}</span>
+        ) : (
+          ""
+        )}
+      </div>
     </div>
-  </div>
-	</span>
-</nav>
-)
+  </nav>
+);
 
 export default AdminNav;

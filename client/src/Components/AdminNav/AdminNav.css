@@ -1,0 +1,17 @@
+.admin-navbar {
+  display: flex;
+  height: 76px;
+  align-items: center;
+}
+
+.admin-navbar .title {
+  background: rgb(255, 255, 255);
+  background: linear-gradient(180deg, rgba(255, 255, 255, 1) 37%, rgba(222, 222, 222, 1) 100%);
+  width: 100%;
+  max-width: 145px;
+  text-align: center;
+  padding: 11px;
+  border-radius: 500px;
+  box-shadow: 0 3px 6px #0000002e;
+  color: #695395;
+}

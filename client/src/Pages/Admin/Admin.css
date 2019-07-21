@@ -1,6 +1,6 @@
 .admin {
   text-align: left;
-  background-color: #EEEEEE;
+  background-color: #ffffff;
   height: 100vh;
   overflow: scroll;
 }
@@ -10,7 +10,15 @@
   align-items: center;
 }
 
-.table {
-  background-color: #ffffff;
-  border: 1px solid #C6C6C6;
+th {
+  border: 0 !important;
+}
+
+td {
+  border: 0 !important;
+}
+
+th,
+td {
+  padding: 40px
 }

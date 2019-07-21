@@ -111,7 +111,7 @@ const ConvertKit = props => {
                     onChange={handleChange}
                     id="convert-select"
                   >
-                    <option value="grade" selected="selected">
+                    <option value="grade" defaultValue="selected">
                       Select a Grade
                     </option>
                     <option value="548828">Pre-k</option>

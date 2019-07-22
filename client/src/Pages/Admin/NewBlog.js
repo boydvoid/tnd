@@ -8,13 +8,12 @@ import {
   convertFromRaw,
   ContentState
 } from "draft-js";
-import Editor from 'draft-js-plugins-editor';
-// import draftToHtml from "draftjs-to-html";
+import draftToHtml from "draftjs-to-html";
 import Input from "../../Components/Input/Input";
 import _ from "lodash";
 import api from "../../utils/api";
-// import CKEditor from "@ckeditor/ckeditor5-react";
-// import BaloonEditor from "@ckeditor/ckeditor5-build-balloon-block";
+import CKEditor from "@ckeditor/ckeditor5-react";
+import BaloonEditor from "@ckeditor/ckeditor5-build-balloon-block";
 import ToggleSwitch from "../../Components/ToggleSwitch/ToggleSwitch";
 import createImagePlugin from "draft-js-image-plugin";
 const imagePlugin = createImagePlugin();
@@ -34,7 +33,7 @@ const NewBlog = props => {
 
     setId(url[5]);
 
-    //need to convert from raw 
+    //need to convert from raw
     api.loadBlog(url[5]).then(blog => {
       setTitleInputVal(blog.data.title);
       setImageurl(blog.data.img);
@@ -55,9 +54,9 @@ const NewBlog = props => {
 
   const onEditorStateChange = editorState => {
     setEditorState(editorState);
-    // setEditorHTML({
-    //   __html: draftToHtml(convertToRaw(editorState.getCurrentContent()))
-    // });
+    setEditorHTML({
+      __html: draftToHtml(convertToRaw(editorState.getCurrentContent()))
+    });
     //save on update
     //need to debounce to save when youre done typing
     //need to test w/ localStorage
@@ -171,7 +170,7 @@ const NewBlog = props => {
 
               <div className="editorWrapper">
                 <div>
-                  {/* <CKEditor
+                  <CKEditor
                     editor={BaloonEditor}
                     data={editorState}
                     onInit={editor => {
@@ -183,13 +182,7 @@ const NewBlog = props => {
                       setEditorState(data);
                       console.log({ event, editor, data });
                     }}
-									/> */}
-                  <Editor 
-                    editorState = {editorState} 
-                    onChange={onEditorStateChange}
-                    placeholder="Start your blog here..."
-                    plugins={plugins}
-                  />                 
+                  />
                 </div>
               </div>
 

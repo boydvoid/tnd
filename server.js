@@ -63,9 +63,6 @@ app.use(passport.session());
 app.use('/api', User)
 app.use('/api', Blogs)
 app.use('/api', Slider)
-app.get('*', (req, res) => {
-  res.sendFile(path.join(__dirname, './client/build/index.html'));
-});
 
 //passport config
 // Passport use
@@ -93,6 +90,9 @@ passport.use(new LocalStrategy(
   }),
 ));
 
+app.get('*', (req, res) => {
+  res.sendFile(path.join(__dirname, './client/build/index.html'));
+});
 
 app.listen(PORT, ()=>{
 	console.log(PORT);

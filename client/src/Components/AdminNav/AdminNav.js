@@ -7,17 +7,9 @@ const AdminNav = props => (
       <p className="title">{props.title}</p>
 
       <div id="navbarNav">
-        {props.position === "left" ? (
-          <span className="mr-auto">{props.children}</span>
-        ) : (
-          ""
-        )}
-        {props.position === "right" ? (
-          <span className="ml-auto">{props.children}</span>
-        ) : (
-          ""
-        )}
+        
       </div>
+      <span className="ml-auto">{/* logout */}</span>
     </div>
   </nav>
 );

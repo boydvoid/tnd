@@ -3,19 +3,22 @@ import Navbar from "../../Components/Navbar/Navbar";
 import PBtn from "../../Components/PBtn/PBtn";
 import "./NewBlog.css";
 import {
-  Editor,
   EditorState,
   convertToRaw,
   convertFromRaw,
   ContentState
 } from "draft-js";
-import draftToHtml from "draftjs-to-html";
+import Editor from 'draft-js-plugins-editor';
+// import draftToHtml from "draftjs-to-html";
 import Input from "../../Components/Input/Input";
 import _ from "lodash";
 import api from "../../utils/api";
-import CKEditor from "@ckeditor/ckeditor5-react";
-import BaloonEditor from "@ckeditor/ckeditor5-build-balloon-block";
+// import CKEditor from "@ckeditor/ckeditor5-react";
+// import BaloonEditor from "@ckeditor/ckeditor5-build-balloon-block";
 import ToggleSwitch from "../../Components/ToggleSwitch/ToggleSwitch";
+import createImagePlugin from "draft-js-image-plugin";
+const imagePlugin = createImagePlugin();
+const plugins = [imagePlugin];
 const NewBlog = props => {
   const [editorState, setEditorState] = useState(EditorState.createEmpty());
   const [editorHTML, setEditorHTML] = useState({ __html: "<div></div>" });
@@ -185,6 +188,7 @@ const NewBlog = props => {
                     editorState = {editorState} 
                     onChange={onEditorStateChange}
                     placeholder="Start your blog here..."
+                    plugins={plugins}
                   />                 
                 </div>
               </div>

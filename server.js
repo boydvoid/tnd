@@ -11,7 +11,7 @@ const db = require('./Models');
 const LocalStrategy = require('passport-local').Strategy;
 const bcrypt = require('bcrypt');
 //routes imports
-const User = require('./routes/userRoutes');
+const User = require('./Routes/userRoutes');
 const Blogs = require('./Routes/blogRoutes')
 const Slider = require('./Routes/sliderRoutes')
 

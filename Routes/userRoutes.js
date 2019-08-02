@@ -22,7 +22,7 @@ router.post('/login', function(req, res, next) {
       // Redirect if it succeeds
       console.log(user);
       if(user.username === 'admin'){
-        return res.redirect('/admin');
+        return res.redirect('/');
       } else {
         return res.redirect('/teacher-freebies');
       }

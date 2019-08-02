@@ -2,7 +2,7 @@ const express = require('express')
 const app = express();
 const path = require('path')
 const mongoose = require('mongoose');
-const PORT  = 3001;
+const PORT  = process.env.PORT || 3001;
 const passport = require('passport')
 const expressValidator = require('express-validator');
 const session = require('express-session');
@@ -11,7 +11,7 @@ const db = require('./Models');
 const LocalStrategy = require('passport-local').Strategy;
 const bcrypt = require('bcrypt');
 //routes imports
-const User = require('./routes/userRoutes');
+const User = require('./Routes/userRoutes');
 const Blogs = require('./Routes/blogRoutes')
 const Slider = require('./Routes/sliderRoutes')
 
@@ -63,9 +63,6 @@ app.use(passport.session());
 app.use('/api', User)
 app.use('/api', Blogs)
 app.use('/api', Slider)
-app.get('*', (req, res) => {
-  res.sendFile(path.join(__dirname, './client/build/index.html'));
-});
 
 //passport config
 // Passport use
@@ -93,6 +90,9 @@ passport.use(new LocalStrategy(
   }),
 ));
 
+app.get('*', (req, res) => {
+  res.sendFile(path.join(__dirname, './client/build/index.html'));
+});
 
 app.listen(PORT, ()=>{
 	console.log(PORT);

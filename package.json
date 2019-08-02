@@ -32,12 +32,15 @@
     "express": "^4.16.4",
     "express-session": "^1.16.1",
     "express-validator": "^5.3.1",
+    "medium-draft": "^0.6.0-beta1",
     "mongoose": "^5.5.8",
     "mongoose-fuzzy-searching": "^1.1.8",
     "nodemon": "^1.19.0",
     "passport": "^0.4.0",
     "passport-local": "^1.0.0",
     "passport-local-mongoose": "^5.0.1",
-    "pure-react-carousel": "^1.19.4"
+    "pure-react-carousel": "^1.19.4",
+    "react-siema": "^1.0.1",
+    "siema": "^1.5.1"
   }
 }

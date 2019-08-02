@@ -25,28 +25,28 @@ if (process.env.NODE_ENV === 'production') {
 }
 
 // // mongo
-// mongoose.connect(process.env.MONGOLAB_ORANGE_URI || 'mongodb://localhost/tnd', { useNewUrlParser: true }).then(() => {
-// });
-
-// // store the session in mongo db
-// const store = new MongoDBStore({
-//   uri: process.env.MONGOLAB_ORANGE_URI || 'mongodb://localhost/tnd',
-//   collection: 'sessions',
-// });
-
-//testing mongo online
-mongoose.connect(process.env.MONGOLAB_ORANGE_URI || 'mongodb://admin:admin11111111@ds253537.mlab.com:53537/tnd', { useNewUrlParser: true }).then((data) => {
-  console.log(data)
+mongoose.connect(process.env.MONGOLAB_ORANGE_URI || 'mongodb://localhost/tnd', { useNewUrlParser: true }).then(() => {
 });
 
 // store the session in mongo db
 const store = new MongoDBStore({
-  uri: process.env.MONGOLAB_ORANGE_URI || 'mongodb://admin:admin11111111@ds253537.mlab.com:53537/tnd',
+  uri: process.env.MONGOLAB_ORANGE_URI || 'mongodb://localhost/tnd',
   collection: 'sessions',
 });
-store.on('error', (error) => {
-  console.log(error);
-});
+
+// //testing mongo online
+// mongoose.connect(process.env.MONGOLAB_ORANGE_URI || 'mongodb://admin:admin11111111@ds253537.mlab.com:53537/tnd', { useNewUrlParser: true }).then((data) => {
+//   console.log(data)
+// });
+
+// // store the session in mongo db
+// const store = new MongoDBStore({
+//   uri: process.env.MONGOLAB_ORANGE_URI || 'mongodb://admin:admin11111111@ds253537.mlab.com:53537/tnd',
+//   collection: 'sessions',
+// });
+// store.on('error', (error) => {
+//   console.log(error);
+// });
 
 // session
 app.use(session({

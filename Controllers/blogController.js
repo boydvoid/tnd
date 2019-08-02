@@ -10,10 +10,12 @@ module.exports = {
     }
   },
   save: (req, res) => {
+    console.log(`save run `);
     db.blogs.updateOne({ _id: req.body.id }, {
       $set: {
         username: req.body.username,
         blog: req.body.blog,
+        description: req.body.description,
         title: req.body.title,
         img: req.body.img,
         live: req.body.live,

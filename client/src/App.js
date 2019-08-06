@@ -6,6 +6,7 @@ import Login from "./Pages/Login";
 import NewBlog from "./Pages/NewBlog";
 import api from "./utils/api";
 import { PromiseProvider } from "mongoose";
+import Images from "./Pages/Images";
 
 const App = () => {
   const [loggedIn, setLoggedIn] = useState(false);
@@ -57,6 +58,17 @@ const App = () => {
             render={() =>
               loggedIn === true && admin === true ? (
                 <Admin logout={logout} username={username} />
+              ) : (
+                <Login />
+              )
+            }
+          />
+          <Route
+            exact
+            path="/images"
+            render={() =>
+              loggedIn === true && admin === true ? (
+                <Images logout={logout} username={username} />
               ) : (
                 <Login />
               )

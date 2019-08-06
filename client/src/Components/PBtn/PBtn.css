@@ -1,10 +1,10 @@
 .primary-button {
-	background-color: #695395;
+	border-radius: 500px;
 	border: none;
-	padding: 15px 50px;
-	margin-top: 20px;
-	color: #ffffff;
-	width: 100%;
+	padding: 10px 50px;
+	margin: 0;
+	background-color: #E5E5E5;
+	color: #000000;
 }
 
 .secondary-button {

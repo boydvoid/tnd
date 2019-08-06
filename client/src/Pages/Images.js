@@ -6,56 +6,33 @@ import "./Admin.css";
 import api from "../utils/api";
 import AdminPattern from "../Components/AdminPattern/AdminPattern";
 import Upload from "../Components/Upload";
-const Admin = props => {
-  const [blogs, setBlogs] = useState([]);
-  const [th, setTh] = useState([
-    "Number",
-    "Title",
-    "Created By",
-    "Date",
-    "Views",
-    "Live",
-    "Category"
-  ]);
+const Images = props => {
+  const [images, setImages] = useState([]);
 
   useEffect(() => {
     loadBlogs();
   }, []);
 
   const loadBlogs = () => {
-    api.loadBlogs().then(data => {
-      setBlogs(data.data);
-    });
-  };
-
-  const newBlog = () => {
-    let data = {
-      username: props.username,
-      title: "New Blog",
-      img: "",
-      live: false,
-      views: 0,
-      category: "Reading"
-    };
-    api.newBlog(data).then(done => {
-      console.log(done);
-      loadBlogs();
+    api.loadImages().then(data => {
+      setImages(data.data);
     });
   };
 
   return (
     <div className="container-fluid admin">
       <AdminNav />
+      <Upload />
       <div className="container">
         <div className="row-contained">
           <div className="col-xl-12">
             <div className="blogs">
               <div className="blogs-header-bar">
-                <h2>Blogs</h2>
+                <h2>Images</h2>
                 <span className="ml-auto">
-                  <PBtn className="createNew" onClick={newBlog}>
+                  {/* <PBtn className="createNew" onClick={newBlog}>
                     <i className="fas fa-plus"></i>
-                  </PBtn>
+                  </PBtn> */}
                 </span>
               </div>
             </div>
@@ -76,7 +53,7 @@ const Admin = props => {
                 <p>Categories</p>
               </div>
             </div>
-            {blogs.map((blog, index) => {
+            {/* {images.map((blog, index) => {
               return (
                 <div className="row-contained">
                   <div className="blogDisplay">
@@ -90,7 +67,7 @@ const Admin = props => {
                   </div>
                 </div>
               );
-            })}
+            })} */}
           </div>
         </div>
       </div>
@@ -98,4 +75,4 @@ const Admin = props => {
   );
 };
 
-export default Admin;
+export default Images;

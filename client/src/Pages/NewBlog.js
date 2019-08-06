@@ -1,5 +1,5 @@
 import React, { useState, useEffect } from "react";
-import Navbar from "../Components/Navbar/Navbar";
+import AdminNav from "../Components/AdminNav/AdminNav";
 import PBtn from "../Components/PBtn/PBtn";
 import "./NewBlog.css";
 import {
@@ -165,12 +165,9 @@ const NewBlog = props => {
   };
   return (
     <div className="container-fluid new-blog">
-      <Navbar className="admin-nav" position="right" title="Admin">
-        <PBtn link="/admin" external={false}>
-          Blogs
-        </PBtn>
+      <AdminNav title="Admin Panel">
         <PBtn onClick={props.logout}>Logout</PBtn>
-      </Navbar>
+      </AdminNav>
 
       <div className="container">
         <div className="row">
@@ -179,15 +176,19 @@ const NewBlog = props => {
               <div className="sidebar"></div>
 
               <div className="toolbar">
-                <PBtn onClick={save}>Save</PBtn>
-                <PBtn onClick={toggleLive}>Preview</PBtn>
-                <Input
-                  placeholder="Image URL"
-                  className="img-input"
-                  value={imageurl}
-                  name="imageurl"
-                  onChange={handleChange}
-                />
+                <div>
+                  <PBtn onClick={save}>
+                    <i className="far fa-save"></i>
+                  </PBtn>
+                  <PBtn onClick={toggleLive}>Preview</PBtn>
+                  <Input
+                    placeholder="Image URL"
+                    className="img-input"
+                    value={imageurl}
+                    name="imageurl"
+                    onChange={handleChange}
+                  />
+                </div>
                 <ToggleSwitch checkboxChange={toggleLive} checked={checked} />
 
                 <select
@@ -217,7 +218,7 @@ const NewBlog = props => {
                   maxLength="140"
                 />
               </div>
-              <div class="title">
+              <div className="title">
                 <Input
                   type="textbox"
                   className="title-box"
